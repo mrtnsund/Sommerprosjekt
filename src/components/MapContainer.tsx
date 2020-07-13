@@ -3,13 +3,6 @@ import React, { useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 require('dotenv').config();
 
-interface ViewportProps {
-  width: any;
-  height: any;
-  latitude: number;
-  longitude: number;
-  zoom: number;
-}
 
 const MapContainer = () => {
 
