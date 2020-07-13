@@ -1,37 +1,42 @@
-import { Component } from 'react';
 import ReactMapGL from 'react-map-gl';
-import React from 'react';
-import './map.css'
+import React, { useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 require('dotenv').config();
 
-class MapContainer extends Component {
+interface ViewportProps {
+  width: any;
+  height: any;
+  latitude: number;
+  longitude: number;
+  zoom: number;
+}
 
-  state = {
-    viewport: {
-      width: "60vw",
-      height: "80vh",
-      latitude: 42.430472,
-      longitude: -123.334102,
-      zoom: 16
-    }
-  };
+const MapContainer = () => {
 
-  render() {
-    console.log('hello')
-    return (
-      <div className="mapContainer">
-        <ReactMapGL
-          {...this.state.viewport}
-          mapboxApiAccessToken={process.env.REACT_APP_API_TOKEN}
-          mapStyle='mapbox://styles/mapbox/streets-v11'
-          onViewportChange={(viewport => this.setState(viewport))}
-        />
-          
-        
-      </div>
-    );
-  }
+
+  const [viewport, setViewport] = useState({
+    latitude: 60.3930,
+    longitude: 5.3242,
+    zoom: 13
+  })
+
+  return (
+    <div>
+      <ReactMapGL 
+        width='100vw'
+        height='100vh'
+        latitude={viewport.latitude}
+        longitude={viewport.longitude}
+        zoom={viewport.zoom}
+        mapboxApiAccessToken={process.env.REACT_APP_API_TOKEN}
+        mapStyle='mapbox://styles/mapbox/streets-v11'
+        onViewportChange={setViewport}
+      >
+
+      </ReactMapGL>
+    </div>
+  )
+
 }
 
 export default MapContainer
