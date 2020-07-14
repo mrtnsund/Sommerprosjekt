@@ -20,6 +20,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           */}
         <Route path="/tabs/dashboard" render={() => <DashboardPage />} exact={true} />
         <Route path="/tabs/map" render={() => <MapView />} exact={true} />
+        <Route exact path="/" render={() => <Redirect to="/tabs/dashboard" />} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="dashboard" href="/tabs/dashboard">
