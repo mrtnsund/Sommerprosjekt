@@ -2,19 +2,13 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import React from 'react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
+import Header from '../components/Header';
 
 const DashboardPage: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Dashboard</IonTitle>
-        </IonToolbar>
-      </IonHeader>
 
+      <Header />
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>

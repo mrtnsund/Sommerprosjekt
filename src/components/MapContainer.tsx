@@ -17,7 +17,7 @@ const MapContainer: React.FC = (props: any) => {
 
     <ReactMapGL
       width='100vw'
-      height='90vh'
+      height='93vh'
       latitude={viewport.latitude}
       longitude={viewport.longitude}
       zoom={viewport.zoom}

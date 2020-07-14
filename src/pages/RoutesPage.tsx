@@ -7,8 +7,8 @@ const RoutesPage: React.FC = () => {
   return (
     <div>
       <Header />
-      <MapContainer />
       <RoutesTabs />
+      <MapContainer />
     </div>
 
 
