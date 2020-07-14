@@ -4,7 +4,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 require('dotenv').config();
 
 
-const MapContainer: React.FC = (props: any) => {
+const BasicMap: React.FC = (props: any) => {
 
 
   const [viewport, setViewport] = useState({
@@ -35,4 +35,4 @@ const MapContainer: React.FC = (props: any) => {
 
 }
 
-export default MapContainer
+export default BasicMap

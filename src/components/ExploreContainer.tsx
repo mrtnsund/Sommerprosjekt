@@ -1,6 +1,6 @@
 import React from 'react';
 import './ExploreContainer.css';
-import MapContainer from './MapContainer';
+import BasicMap from './BasicMap';
 
 
 interface ContainerProps {
@@ -9,7 +9,7 @@ interface ContainerProps {
 
 const ExploreContainer: React.FC<ContainerProps> = () => {
   return (
-    <MapContainer/>
+    <h1>Hello</h1>
   );
 };
 
