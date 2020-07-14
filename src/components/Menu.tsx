@@ -33,7 +33,7 @@ const appPages: AppPage[] = [
     mdIcon: mapSharp
   }
 ];
-//Comment for test commit.
+//Is this a good comment for second commit?
 
 const Menu: React.FC = () => {
   const location = useLocation();
