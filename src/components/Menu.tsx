@@ -18,27 +18,33 @@ import './Menu.css';
 const username: string = 'bruker'
 const useremail: string = 'bruker@sommerprosjekt.no'
 
-interface AppPage {
-  url: string;
-  iosIcon: string;
-  mdIcon: string;
-  title: string;
+interface Pages {
+  title: string,
+  path: string,
+  icon: string,
+  routerDirection?: string
 }
 
-const appPages: AppPage[] = [
-  {
-    title: 'Dashboard',
-    url: '/dashboard',
-    iosIcon: homeOutline,
-    mdIcon: homeSharp
-  },
-  {
-    title: 'My routes',
-    url: '/routes',
-    iosIcon: carOutline,
-    mdIcon: carSharp
-  }
-];
+const routes = {
+  appPages: [
+    { title: 'Dashboard', path: '/tabs/dashboard', icon: homeOutline },
+    { title: 'My Routes', path: '/tabs/routes', icon: carOutline },
+    { title: 'Map', path: '/tabs/map', icon: mapOutline },
+  ]
+};
+
+const renderListitems = (list: Pages[]) => {
+  return list
+      .filter(route => !!route.path)
+      .map(p => (
+        <IonMenuToggle key={p.title} auto-hide="false">
+          <IonItem detail={false} routerLink={p.path} routerDirection="none">
+            <IonIcon slot="start" icon={p.icon} />
+            <IonLabel>{p.title}</IonLabel>
+          </IonItem>
+        </IonMenuToggle>
+      ));
+}
 
 
 const Menu: React.FC = () => {
@@ -47,23 +53,9 @@ const Menu: React.FC = () => {
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
-        <IonList id="inbox-list">
-          <IonListHeader>{username}</IonListHeader>
-          <IonNote>{useremail}</IonNote>
-          {appPages.map((appPage, index) => {
-            return (
-              <IonMenuToggle key={index} autoHide={false}>
-                <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
-                  <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
-                  <IonLabel>{appPage.title}</IonLabel>
-                </IonItem>
-              </IonMenuToggle>
-            );
-          })}
+        <IonList lines="none">
+          {renderListitems(routes.appPages)}
         </IonList>
-        
-
-        
       </IonContent>
     </IonMenu>
   );
