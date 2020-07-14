@@ -28,7 +28,6 @@ interface Pages {
 const routes = {
   appPages: [
     { title: 'Dashboard', path: '/tabs/dashboard', icon: homeOutline },
-    { title: 'My Routes', path: '/tabs/routes', icon: carOutline },
     { title: 'Map', path: '/tabs/map', icon: mapOutline },
   ]
 };
