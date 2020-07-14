@@ -18,7 +18,7 @@ const RoutesTabs: React.FC = () => {
           <Route path="/tabs/speakers/sessions/:id" component={DashboardPage} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="schedule" href="/tabs/schedule">
+          <IonTabButton tab="schedule" href="/dashboard">
             <IonIcon icon={calendar} />
             <IonLabel>Schedule</IonLabel>
           </IonTabButton>
