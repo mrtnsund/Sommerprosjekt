@@ -2,12 +2,8 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import React from 'react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
-import './Page.css';
 
-const Page: React.FC = () => {
-
-  const { name } = useParams<{ name: string; }>();
-
+const DashboardPage: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -15,20 +11,20 @@ const Page: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>{name}</IonTitle>
+          <IonTitle>Dashboard</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{name}</IonTitle>
+            <IonTitle size="large">Dashboard</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name={name} />
+        <ExploreContainer name="Dashboard" />
       </IonContent>
     </IonPage>
   );
 };
 
-export default Page;
+export default DashboardPage;

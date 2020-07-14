@@ -12,7 +12,7 @@ import {
 
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { mapOutline, mapSharp } from 'ionicons/icons';
+import { mapOutline, mapSharp, homeOutline, homeSharp, carOutline, carSharp} from 'ionicons/icons';
 import './Menu.css';
 
 const username: string = 'bruker'
@@ -27,14 +27,20 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: 'Map',
-    url: '/page/Map',
-    iosIcon: mapOutline,
-    mdIcon: mapSharp
+    title: 'Dashboard',
+    url: '/dashboard',
+    iosIcon: homeOutline,
+    mdIcon: homeSharp
+  },
+  {
+    title: 'My routes',
+    url: '/routes',
+    iosIcon: carOutline,
+    mdIcon: carSharp
   }
 ];
-//Is this a good comment for second commit?
-//ANOTHER COMMENT????
+
+
 const Menu: React.FC = () => {
   const location = useLocation();
 
