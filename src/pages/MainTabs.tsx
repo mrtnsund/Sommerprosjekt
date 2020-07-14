@@ -26,9 +26,6 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           <IonIcon icon={homeOutline} />
           <IonLabel>Dashboard</IonLabel>
         </IonTabButton>
-
-      
-
         <IonTabButton tab="map" href="/tabs/map">
           <IonIcon icon={mapOutline} />
           <IonLabel>Map</IonLabel>
