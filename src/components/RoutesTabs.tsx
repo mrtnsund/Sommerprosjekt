@@ -13,7 +13,7 @@ const RoutesTabs: React.FC = () => {
             Using the render method prop cuts down the number of renders your components will have due to route changes.
             Use the component prop when your component depends on the RouterComponentProps passed in automatically.
           */}
-          <Route path="/tabs/speakers/:id" component={DashboardPage} exact={true} />
+          <Route path="/dashboard" component={DashboardPage} exact={true} />
           <Route path="/tabs/schedule/:id" component={DashboardPage} />
           <Route path="/tabs/speakers/sessions/:id" component={DashboardPage} />
         </IonRouterOutlet>

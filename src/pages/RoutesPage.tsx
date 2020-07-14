@@ -1,9 +1,15 @@
 import React from 'react';
 import RoutesTabs from '../components/RoutesTabs';
+import MapContainer from '../components/MapContainer';
 
 const RoutesPage: React.FC = () => {
   return (
-    <RoutesTabs />
+    <div>
+      <RoutesTabs />
+      <MapContainer />
+    </div>
+
+
   );
 };
 

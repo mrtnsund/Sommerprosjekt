@@ -4,7 +4,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 require('dotenv').config();
 
 
-const MapContainer = () => {
+const MapContainer: React.FC = (props:any) => {
 
 
   const [viewport, setViewport] = useState({
@@ -15,7 +15,7 @@ const MapContainer = () => {
 
   return (
     <div>
-      <ReactMapGL 
+      <ReactMapGL
         width='100vw'
         height='100vh'
         latitude={viewport.latitude}
