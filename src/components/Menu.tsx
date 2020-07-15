@@ -35,6 +35,7 @@ const routes = {
   appPages: [
     { title: "Dashboard", path: "/tabs/dashboard", icon: homeOutline },
     { title: "Map", path: "/tabs/map", icon: mapOutline },
+    { title: "Routes", path: "/tabs/routes", icon: carOutline },
   ],
 };
 

@@ -11,6 +11,7 @@ import DashboardPage from "./DashboardPage";
 import { Redirect, Route } from "react-router";
 import { homeOutline, mapOutline, carOutline } from "ionicons/icons";
 import MapView from "./MapView";
+import RoutesPage from "./RoutesPage";
 
 interface MainTabsProps {}
 
@@ -34,6 +35,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           path="/"
           render={() => <Redirect to="/tabs/dashboard" />}
         />
+        <Route path="/tabs/routes" render={() => <RoutesPage />} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="dashboard" href="/tabs/dashboard">
@@ -43,6 +45,10 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         <IonTabButton tab="map" href="/tabs/map">
           <IonIcon icon={mapOutline} />
           <IonLabel>Map</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="routes" href="/tabs/routes">
+          <IonIcon icon={carOutline} />
+          <IonLabel>Routes</IonLabel>
         </IonTabButton>
       </IonTabBar>
     </IonTabs>
