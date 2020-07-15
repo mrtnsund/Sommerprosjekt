@@ -31,6 +31,9 @@ const RoutesPage = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton></IonMenuButton>
+          </IonButtons>
           <IonSegment
             onIonChange={(e) => console.log("Segment selected", e.detail.value)}
           >
