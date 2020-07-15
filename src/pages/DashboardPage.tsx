@@ -1,6 +1,13 @@
-import { IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import React from 'react';
-import Header from '../components/Header';
+import {
+  IonContent,
+  IonHeader,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import React from "react";
+import Header from "../components/Header";
 
 const DashboardPage: React.FC = () => {
   return (
