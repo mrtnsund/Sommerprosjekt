@@ -8,6 +8,7 @@ import {
   IonTitle,
   IonContent,
 } from "@ionic/react";
+import PureMap from "../components/PureMap";
 import BasicMap from "../components/BasicMap";
 
 const MapView: React.FC = () => {

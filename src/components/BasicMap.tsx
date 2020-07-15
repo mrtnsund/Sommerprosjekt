@@ -1,7 +1,18 @@
-import ReactMapGL, { NavigationControl } from "react-map-gl";
+import ReactMapGL, { NavigationControl, Marker } from "react-map-gl";
 import React, { useState } from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
 require("dotenv").config();
+
+const locations = [
+  {
+    latitude: 60.393,
+    longitude: 5.3242,
+  },
+  {
+    latitude: 60.493,
+    longitude: 5.31,
+  },
+];
 
 const BasicMap: React.FC = (props: any) => {
   const [viewport, setViewport] = useState({
