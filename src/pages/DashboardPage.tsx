@@ -5,17 +5,20 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonMenu,
+  IonButtons,
 } from "@ionic/react";
 import React from "react";
-import Header from "../components/Header";
 
 const DashboardPage: React.FC = () => {
   return (
     <IonPage>
-      <Header />
       <IonContent>
-        <IonHeader collapse="condense">
+        <IonHeader>
           <IonToolbar>
+            <IonButtons slot="start">
+              <IonMenuButton></IonMenuButton>
+            </IonButtons>
             <IonTitle size="large">Dashboard</IonTitle>
           </IonToolbar>
         </IonHeader>

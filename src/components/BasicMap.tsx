@@ -13,7 +13,7 @@ const BasicMap: React.FC = (props: any) => {
   return (
     <ReactMapGL
       width="100vw"
-      height="93vh"
+      height="90vh"
       latitude={viewport.latitude}
       longitude={viewport.longitude}
       zoom={viewport.zoom}
