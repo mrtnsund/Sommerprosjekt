@@ -1,6 +1,7 @@
-import ReactMapGL, { NavigationControl, Marker } from "react-map-gl";
+import ReactMapGL, { NavigationControl, Marker, MarkerProps } from "react-map-gl";
 import React, { PureComponent } from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
+import "./marker.css";
 require("dotenv").config();
 
 interface MarkersProps {
@@ -9,21 +10,24 @@ interface MarkersProps {
   latitude: number;
 }
 
-const CITIES = [
+const locations = [
   { name: "bergen", longitude: 60.39299, latitude: 5.32415 },
-  { name: "bergen2", longitude: 60.59299, latitude: 5.42415 },
+  { name: "bergen2", longitude: 61.59299, latitude: 5.42415 },
 ];
 
 // PureComponent ensures that the markers are only rerendered when data changes
 class Markers extends PureComponent<{ data: any }> {
   render() {
     const { data } = this.props;
-    return data.map((city: MarkersProps) => (
+    console.log("data", data);
+    
+    return data.map((marker: MarkersProps) => (
       <Marker
-        key={city.name}
-        longitude={city.longitude}
-        latitude={city.latitude}
-      ></Marker>
+        className="marker"
+        key={marker.name}
+        longitude={marker.longitude}
+        latitude={marker.latitude}
+      />
     ));
   }
 }
@@ -47,12 +51,15 @@ class PureMap extends PureComponent {
         mapStyle="mapbox://styles/mapbox/streets-v11"
         onViewportChange={(viewport) => this.setState({ viewport })}
       >
-        <Marker latitude={this.state.viewport.latitude} longitude={this.state.viewport.longitude} />
+        <Marker
+          className="marker"
+          latitude={60.393}
+          longitude={5.3442}
+        />
         <div style={{ position: "absolute", right: 0, marginTop: "10%" }}>
           <NavigationControl />
         </div>
-        <Markers data={CITIES} />
-
+        <Markers data={locations} />
       </ReactMapGL>
     );
   }

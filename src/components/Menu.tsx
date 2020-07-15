@@ -6,23 +6,12 @@ import {
   IonList,
   IonMenu,
   IonMenuToggle,
-  
 } from "@ionic/react";
 
 import React from "react";
 import { useLocation } from "react-router-dom";
-import {
-  mapOutline,
-  mapSharp,
-  homeOutline,
-  homeSharp,
-  carOutline,
-  carSharp,
-} from "ionicons/icons";
+import { mapOutline, homeOutline, carOutline } from "ionicons/icons";
 import "./Menu.css";
-
-const username: string = "bruker";
-const useremail: string = "bruker@sommerprosjekt.no";
 
 interface Pages {
   title: string;

@@ -9,7 +9,6 @@ import {
   IonContent,
 } from "@ionic/react";
 import PureMap from "../components/PureMap";
-import BasicMap from "../components/BasicMap";
 
 const MapView: React.FC = () => {
   return (
@@ -24,7 +23,7 @@ const MapView: React.FC = () => {
       </IonHeader>
 
       <IonContent class="map-page">
-        <BasicMap />
+        <PureMap />
       </IonContent>
     </IonPage>
   );
