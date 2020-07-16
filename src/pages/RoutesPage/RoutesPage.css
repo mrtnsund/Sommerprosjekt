@@ -1,0 +1,7 @@
+.deleteIcon:hover {
+  color: red;
+}
+.archiveIcon:hover,
+.editIcon:hover {
+  color: #3880ff;
+}

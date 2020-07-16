@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   IonPage,
   IonContent,
@@ -17,6 +17,7 @@ import {
   IonIcon,
   IonSegment,
   IonSegmentButton,
+  IonItem,
 } from "@ionic/react";
 import {
   pencilSharp,
@@ -24,8 +25,17 @@ import {
   trashSharp,
   archiveSharp,
 } from "ionicons/icons";
+import './RoutesPage.css';
+import RoutesPageCard from "./RoutesPageCard";
+import PureMap from "../../components/PureMap";
 
-const RoutesPage = () => {
+const RoutesPage: React.FC = () => {
+  const [viewMap, setViewMap] = useState(false)
+
+  const toggleView = () => {
+    setViewMap(!viewMap);
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -34,36 +44,20 @@ const RoutesPage = () => {
             <IonMenuButton></IonMenuButton>
           </IonButtons>
           <IonSegment
-            onIonChange={(e) => console.log("Segment selected", e.detail.value)}
+            onClick={() => toggleView()}
+            onIonChange={(e) => console.log('Segment selected', e.detail.value)}
           >
-            <IonSegmentButton value="friends">
+            <IonSegmentButton value="list">
               <IonLabel>List</IonLabel>
             </IonSegmentButton>
-            <IonSegmentButton value="enemies">
+            <IonSegmentButton value="map">
               <IonLabel>Map</IonLabel>
             </IonSegmentButton>
           </IonSegment>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonCard>
-          <IonCardHeader>
-            <IonCardSubtitle>Bergen to Oslo</IonCardSubtitle>
-            <IonCardTitle>Første tur</IonCardTitle>
-          </IonCardHeader>
-
-          <IonCardContent>
-            <IonChip slot="start">
-              <IonAvatar>
-                <IonIcon icon={personCircleOutline} />
-              </IonAvatar>
-              <IonLabel>Kit Bishop</IonLabel>
-            </IonChip>
-            <IonIcon slot="end" icon={archiveSharp} />
-            <IonIcon slot="end" icon={pencilSharp} />
-            <IonIcon slot="end" icon={trashSharp} />
-          </IonCardContent>
-        </IonCard>
+      { (viewMap) ? <PureMap /> : <RoutesPageCard /> }
       </IonContent>
     </IonPage>
   );

@@ -11,7 +11,7 @@ import DashboardPage from "./DashboardPage";
 import { Redirect, Route } from "react-router";
 import { homeOutline, mapOutline, carOutline } from "ionicons/icons";
 import MapView from "./MapView";
-import RoutesPage from "./RoutesPage";
+import RoutesPage from "./RoutesPage/RoutesPage";
 
 interface MainTabsProps {}
 
