@@ -42,7 +42,7 @@ class PureMap extends PureComponent {
 
   addMarker = (event: any) => {
     let { markerLocations } = this.state;
-    const locations = event.lngLat;
+    const coordinates = event.lngLat;
 
     let newid = 0;
     if (markerLocations.length !== 0) {
@@ -51,8 +51,8 @@ class PureMap extends PureComponent {
 
     const newMarker = {
       id: newid,
-      longitude: locations[0],
-      latitude: locations[1],
+      longitude: coordinates[0],
+      latitude: coordinates[1],
     };
 
     markerLocations = [...markerLocations, newMarker];
@@ -71,14 +71,15 @@ class PureMap extends PureComponent {
         attributionControl={false}
         onClick={this.addMarker}
       >
-        <Markers data={this.state.markerLocations} />
-        <div style={{ position: "absolute", right: 3, marginTop: "5%" }}>
+        <div style={{ position: "absolute", right: 3, marginTop: "100%" }}>
           <NavigationControl />
+          <GeolocateControl
+            positionOptions={{ enableHighAccuracy: true }}
+            trackUserLocation={true}
+          />
         </div>
-        <GeolocateControl
-          positionOptions={{ enableHighAccuracy: true }}
-          trackUserLocation={true}
-        />
+
+        <Markers data={this.state.markerLocations} />
       </ReactMapGL>
     );
   }
