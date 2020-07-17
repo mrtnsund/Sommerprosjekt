@@ -1,36 +1,15 @@
+import React, { PureComponent } from "react";
 import ReactMapGL, {
   NavigationControl,
-  Marker,
   GeolocateControl,
 } from "react-map-gl";
-import React, { PureComponent } from "react";
+import MarkerComponent from "./MarkerComponent";
+
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./marker.css";
 require("dotenv").config();
 
-interface MarkerProps {
-  id: number;
-  longitude: number;
-  latitude: number;
-}
-
-// PureComponent ensures that the markers are only rerendered when data changes
-class Markers extends PureComponent<{ data: any }> {
-  render() {
-    const { data } = this.props;
-
-    return data.map((marker: MarkerProps) => (
-      <Marker
-        className="marker"
-        key={marker.id}
-        longitude={marker.longitude}
-        latitude={marker.latitude}
-      />
-    ));
-  }
-}
-
-class PureMap extends PureComponent {
+export default class PureMap extends PureComponent {
   state = {
     viewport: {
       longitude: 5.3242,
@@ -59,6 +38,8 @@ class PureMap extends PureComponent {
     this.setState({ markerLocations });
   };
 
+  componentDidMount() {}
+
   render() {
     return (
       <ReactMapGL
@@ -79,10 +60,8 @@ class PureMap extends PureComponent {
           />
         </div>
 
-        <Markers data={this.state.markerLocations} />
+        <MarkerComponent data={this.state.markerLocations} />
       </ReactMapGL>
     );
   }
 }
-
-export default PureMap;
