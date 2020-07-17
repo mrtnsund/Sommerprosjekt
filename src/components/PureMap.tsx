@@ -6,6 +6,7 @@ import ReactMapGL, {
 } from "react-map-gl";
 //@ts-ignore
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
+import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 import MarkerComponent from "./MarkerComponent";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./marker.css";
