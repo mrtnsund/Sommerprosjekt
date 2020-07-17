@@ -2,9 +2,11 @@ import React, { PureComponent } from "react";
 import ReactMapGL, {
   NavigationControl,
   GeolocateControl,
+  InteractiveMap,
 } from "react-map-gl";
+//@ts-ignore
+import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
 import MarkerComponent from "./MarkerComponent";
-
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./marker.css";
 require("dotenv").config();
@@ -17,7 +19,10 @@ export default class PureMap extends PureComponent {
       zoom: 8,
     },
     markerLocations: [] as any,
+    
   };
+
+  mapRef = React.createRef<InteractiveMap>() as any;
 
   addMarker = (event: any) => {
     let { markerLocations } = this.state;
@@ -37,12 +42,22 @@ export default class PureMap extends PureComponent {
     markerLocations = [...markerLocations, newMarker];
     this.setState({ markerLocations });
   };
+  
+  componentDidMount() {
+    const map = this.mapRef.current.getMap()
+    const directions = new MapboxDirections({
+      accessToken: process.env.REACT_APP_API_TOKEN,
+      unit: 'metric',
+      profile: 'mapbox/driving'
+    });
 
-  componentDidMount() {}
+    map.addControl(directions, 'top-left')
+  }
 
   render() {
     return (
       <ReactMapGL
+        ref={this.mapRef}
         {...this.state.viewport}
         width="100vw"
         height="78vh"
@@ -50,7 +65,6 @@ export default class PureMap extends PureComponent {
         mapStyle="mapbox://styles/mapbox/streets-v11"
         onViewportChange={(viewport) => this.setState({ viewport })}
         attributionControl={false}
-        onClick={this.addMarker}
       >
         <div style={{ position: "absolute", right: 3, marginTop: "100%" }}>
           <NavigationControl />
