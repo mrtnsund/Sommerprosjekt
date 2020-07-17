@@ -5,7 +5,6 @@ import { archiveSharp, pencilSharp, trashSharp } from "ionicons/icons";
 const RoutesPageCard = () => {
     return (
         <IonCard>
-            <img src="https://raw.githubusercontent.com/ionic-team/ionic-docs/master/src/demos/api/card/madison.jpg" alt="img" />
         <IonCardHeader>
           <IonItem lines="none">
             <IonIcon slot="end" icon={archiveSharp} className="archiveIcon"/>
