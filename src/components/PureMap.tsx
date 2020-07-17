@@ -10,6 +10,7 @@ import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 import MarkerComponent from "./MarkerComponent";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./marker.css";
+import markerService from "../services/markerServices";
 require("dotenv").config();
 
 export default class PureMap extends PureComponent {
@@ -22,6 +23,8 @@ export default class PureMap extends PureComponent {
     markerLocations: [] as any,
     
   };
+
+ 
 
   mapRef = React.createRef<InteractiveMap>() as any;
 
@@ -53,6 +56,11 @@ export default class PureMap extends PureComponent {
     });
 
     map.addControl(directions, 'top-left')
+    markerService
+    .getMarkers()
+        .then((markerLocations: any) => {
+          this.setState({markerLocations})
+        })
   }
 
   render() {
