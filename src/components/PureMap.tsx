@@ -5,8 +5,8 @@ import ReactMapGL, {
   InteractiveMap,
 } from "react-map-gl";
 //@ts-ignore
-import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
-import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
+import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
+import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css";
 import MarkerComponent from "./MarkerComponent";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./marker.css";
@@ -21,10 +21,7 @@ export default class PureMap extends PureComponent {
       zoom: 8,
     },
     markerLocations: [] as any,
-    
   };
-
- 
 
   mapRef = React.createRef<InteractiveMap>() as any;
 
@@ -46,45 +43,74 @@ export default class PureMap extends PureComponent {
     markerLocations = [...markerLocations, newMarker];
     this.setState({ markerLocations });
   };
-  
+
+  addCenterMarker = () => {
+    const map = this.mapRef.current.getMap();
+    let { lng, lat } = map.getCenter();
+    let { markerLocations } = this.state;
+
+    let newid = 0;
+    if (markerLocations.length !== 0) {
+      newid = markerLocations.slice(-1)[0].id + 1;
+    }
+    console.log("lon:", lng, " lat:", lat)
+
+    if(lng !== undefined && lat !== undefined) {
+      const newMarker = {
+        id: newid,
+        longitude: lng,
+        latitude: lat,
+      }
+      markerLocations = [...markerLocations, newMarker];
+      this.setState({ markerLocations });
+    }else {
+      //Add some error handling here.
+      return
+    }
+    
+    
+  };
+
   componentDidMount() {
-    const map = this.mapRef.current.getMap()
+    const map = this.mapRef.current.getMap();
     const directions = new MapboxDirections({
       accessToken: process.env.REACT_APP_API_TOKEN,
-      unit: 'metric',
-      profile: 'mapbox/driving'
+      unit: "metric",
+      profile: "mapbox/driving",
     });
 
-    map.addControl(directions, 'top-left')
-    markerService
-    .getMarkers()
-        .then((markerLocations: any) => {
-          this.setState({markerLocations})
-        })
+    map.addControl(directions, "top-left");
+
+    markerService.getMarkers().then((markerLocations: any) => {
+      this.setState({ markerLocations });
+    });
   }
 
   render() {
     return (
-      <ReactMapGL
-        ref={this.mapRef}
-        {...this.state.viewport}
-        width="100vw"
-        height="78vh"
-        mapboxApiAccessToken={process.env.REACT_APP_API_TOKEN}
-        mapStyle="mapbox://styles/mapbox/streets-v11"
-        onViewportChange={(viewport) => this.setState({ viewport })}
-        attributionControl={false}
-      >
-        <div style={{ position: "absolute", right: 3, marginTop: "100%" }}>
-          <NavigationControl />
-          <GeolocateControl
-            positionOptions={{ enableHighAccuracy: true }}
-            trackUserLocation={true}
-          />
-        </div>
+      <div>
+        <ReactMapGL
+          ref={this.mapRef}
+          {...this.state.viewport}
+          width="100vw"
+          height="78vh"
+          mapboxApiAccessToken={process.env.REACT_APP_API_TOKEN}
+          mapStyle="mapbox://styles/mapbox/streets-v11"
+          onViewportChange={(viewport) => this.setState({ viewport })}
+          attributionControl={false}
+          onClick={this.addCenterMarker}
+        >
+          <div style={{ position: "absolute", right: 3, marginTop: "100%" }}>
+            <NavigationControl />
+            <GeolocateControl
+              positionOptions={{ enableHighAccuracy: true }}
+              trackUserLocation={true}
+            />
+          </div>
 
-        <MarkerComponent data={this.state.markerLocations} />
-      </ReactMapGL>
+          <MarkerComponent data={this.state.markerLocations} />
+        </ReactMapGL>
+      </div>
     );
   }
 }
