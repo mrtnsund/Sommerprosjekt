@@ -9,11 +9,11 @@ import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css";
 import MarkerComponent from "./MarkerComponent";
 import "mapbox-gl/dist/mapbox-gl.css";
-import "./marker.css";
 import markerService from "../services/markerServices";
 import Crosshair from "./Crosshair";
-import "./crosshair.css";
 import FabMapButton from "./FabMapButton";
+import "./map.css";
+import { IonButton } from "@ionic/react";
 
 require("dotenv").config();
 
@@ -101,14 +101,36 @@ export default class PureMap extends PureComponent {
     this.setState({ viewport });
   };
 
+  deleteAll = () => {
+    let { markerLocations } = this.state;
+
+    console.log(markerLocations);
+    for (let i = 0; i < markerLocations.length; i++) {
+      let id = markerLocations[i].id;
+      console.log(id);
+
+      markerService
+        .remove(id)
+        .then((returned) => {
+          console.log("deleted: ", returned);
+          markerLocations = markerLocations.filter((m: any) => m.id !== id);
+          this.setState({ markerLocations });
+
+        })
+        .catch((error) => console.log(error));
+    }
+
+  };
+
   render() {
     return (
       <div>
         <ReactMapGL
+          className="mapContainer"
           ref={this.mapRef}
           {...this.state.viewport}
-          width="100vw"
-          height="78vh"
+          width="100%"
+          height="78.5vh"
           mapboxApiAccessToken={process.env.REACT_APP_API_TOKEN}
           mapStyle="mapbox://styles/mapbox/streets-v11"
           onViewportChange={this._updateViewport}
@@ -117,6 +139,13 @@ export default class PureMap extends PureComponent {
           <MarkerComponent data={this.state.markerLocations} />
           <Crosshair />
           <FabMapButton addMarker={this.addCenterMarker} />
+          <IonButton
+            shape="round"
+            style={{ marginTop: "40%" }}
+            onClick={this.deleteAll}
+          >
+            !!RemoveAllMarkers!!
+          </IonButton>
 
           <div style={{ position: "absolute", right: 3, marginTop: "50%" }}>
             <NavigationControl />

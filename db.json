@@ -1,34 +1,9 @@
 {
   "markers": [
     {
-      "id": 0,
-      "longitude": 5.3242,
-      "latitude": 60.393
-    },
-    {
       "id": 1,
-      "longitude": 5.3642,
-      "latitude": 60.383
-    },
-    {
-      "id": 2,
-      "longitude": 5.3333,
-      "latitude": 60.2222
-    },
-    {
-      "id": 3,
-      "longitude": 5.458782519531073,
-      "latitude": 60.31559955004308
-    },
-    {
-      "id": 4,
-      "longitude": 5.552166308593725,
-      "latitude": 60.26662034050404
-    },
-    {
-      "id": 5,
-      "longitude": 5.214336718749433,
-      "latitude": 60.34006164690828
+      "longitude": 5.58499132482071,
+      "latitude": 60.32781015927073
     }
   ]
 }
