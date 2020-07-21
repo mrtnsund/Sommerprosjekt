@@ -1,6 +1,6 @@
 import React from 'react';
 import './crosshair.css';
-import crosshair from '../images/crosshair.png'
+import crosshair from '../images/red-crosshair.png'
 
 
 const Crosshair: React.FC = () => {
