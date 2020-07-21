@@ -11,6 +11,8 @@ import MarkerComponent from "./MarkerComponent";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./marker.css";
 import markerService from "../services/markerServices";
+import Crosshair from "./Crosshair";
+import "./crosshair.css";
 require("dotenv").config();
 
 export default class PureMap extends PureComponent {
@@ -53,22 +55,19 @@ export default class PureMap extends PureComponent {
     if (markerLocations.length !== 0) {
       newid = markerLocations.slice(-1)[0].id + 1;
     }
-    console.log("lon:", lng, " lat:", lat)
 
-    if(lng !== undefined && lat !== undefined) {
+    if (lng !== undefined && lat !== undefined) {
       const newMarker = {
         id: newid,
         longitude: lng,
         latitude: lat,
-      }
+      };
       markerLocations = [...markerLocations, newMarker];
       this.setState({ markerLocations });
-    }else {
+    } else {
       //Add some error handling here.
-      return
+      return;
     }
-    
-    
   };
 
   componentDidMount() {
@@ -84,6 +83,8 @@ export default class PureMap extends PureComponent {
     markerService.getMarkers().then((markerLocations: any) => {
       this.setState({ markerLocations });
     });
+
+    
   }
 
   render() {
@@ -100,6 +101,8 @@ export default class PureMap extends PureComponent {
           attributionControl={false}
           onClick={this.addCenterMarker}
         >
+        <Crosshair/>
+
           <div style={{ position: "absolute", right: 3, marginTop: "100%" }}>
             <NavigationControl />
             <GeolocateControl

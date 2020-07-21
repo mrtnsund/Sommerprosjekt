@@ -19,6 +19,11 @@ export default class Markers extends PureComponent<{ data: any }> {
         key={marker.id}
         longitude={marker.longitude}
         latitude={marker.latitude}
+        //in order to add marker add proper location:
+        //offsetLeft needs to be -(half of the size of the icon).
+        //offsetTop needs to be -(size of the icon).
+        offsetLeft={-20}
+        offsetTop={-40}
       />
     ));
   }
