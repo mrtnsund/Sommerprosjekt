@@ -90,6 +90,9 @@ export default class PureMap extends PureComponent {
       this.setState({ markerLocations });
     });
   }
+  _updateViewport = (viewport: any) => {
+    this.setState({viewport});
+  }
 
   render() {
     return (
@@ -101,7 +104,7 @@ export default class PureMap extends PureComponent {
           height="78vh"
           mapboxApiAccessToken={process.env.REACT_APP_API_TOKEN}
           mapStyle="mapbox://styles/mapbox/streets-v11"
-          onViewportChange={(viewport) => this.setState({ viewport })}
+          onViewportChange={this._updateViewport}
           attributionControl={false}
         >
           <Crosshair />
@@ -114,6 +117,8 @@ export default class PureMap extends PureComponent {
             <GeolocateControl
               positionOptions={{ enableHighAccuracy: true }}
               trackUserLocation={true}
+              onViewportChange={this._updateViewport}
+              showUserLocation={true}
             />
           </div>
 
