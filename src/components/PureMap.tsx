@@ -30,6 +30,7 @@ export default class PureMap extends PureComponent {
   mapRef = React.createRef<InteractiveMap>() as any;
 
   addMarker = (event: any) => {
+    event.preventDefault();
     let { markerLocations } = this.state;
     const coordinates = event.lngLat;
 
@@ -64,8 +65,14 @@ export default class PureMap extends PureComponent {
         longitude: lng,
         latitude: lat,
       };
-      markerLocations = [...markerLocations, newMarker];
-      this.setState({ markerLocations });
+      markerService
+        .create(newMarker)
+        .then((returnedMarker) => {
+          markerLocations = [...markerLocations, returnedMarker];
+          this.setState({ markerLocations });
+          console.log("added: ", newMarker);
+        })
+        .catch((error) => console.log(error));
     } else {
       //Add some error handling here.
       return;
@@ -86,13 +93,13 @@ export default class PureMap extends PureComponent {
   componentDidMount() {
     this.addNavigationControl();
 
-    markerService.getMarkers().then((markerLocations: any) => {
+    markerService.getAll().then((markerLocations: any) => {
       this.setState({ markerLocations });
     });
   }
   _updateViewport = (viewport: any) => {
-    this.setState({viewport});
-  }
+    this.setState({ viewport });
+  };
 
   render() {
     return (
@@ -107,10 +114,9 @@ export default class PureMap extends PureComponent {
           onViewportChange={this._updateViewport}
           attributionControl={false}
         >
+          <MarkerComponent data={this.state.markerLocations} />
           <Crosshair />
-          <FabMapButton
-            addMarker={this.addCenterMarker}
-          />
+          <FabMapButton addMarker={this.addCenterMarker} />
 
           <div style={{ position: "absolute", right: 3, marginTop: "50%" }}>
             <NavigationControl />
@@ -121,8 +127,6 @@ export default class PureMap extends PureComponent {
               showUserLocation={true}
             />
           </div>
-
-          <MarkerComponent data={this.state.markerLocations} />
         </ReactMapGL>
       </div>
     );
