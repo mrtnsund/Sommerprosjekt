@@ -6,25 +6,10 @@ import {
   IonToolbar,
   IonButtons,
   IonMenuButton,
-  IonCard,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonCardContent,
-  IonAvatar,
-  IonChip,
   IonLabel,
-  IonIcon,
   IonSegment,
   IonSegmentButton,
-  IonItem,
 } from "@ionic/react";
-import {
-  pencilSharp,
-  personCircleOutline,
-  trashSharp,
-  archiveSharp,
-} from "ionicons/icons";
 import './RoutesPage.css';
 import RoutesPageCard from "./RoutesPageCard";
 import PureMap from "../../components/PureMap";

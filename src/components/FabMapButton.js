@@ -1,6 +1,6 @@
 import React from "react";
 import { IonFab, IonFabButton, IonIcon, IonFabList } from "@ionic/react";
-import { add, flagOutline, carOutline } from "ionicons/icons";
+import { add, flagOutline } from "ionicons/icons";
 
 const FabMapButton = ({addMarker}) => {
   return (
