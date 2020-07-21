@@ -1,10 +1,11 @@
 import React from 'react';
 import './crosshair.css';
+import crosshair from '../images/crosshair.png'
 
 
 const Crosshair: React.FC = () => {
   return (
-    <img src="https://img.icons8.com/material-rounded/24/000000/accuracy.png" className="crosshair"/>
+    <img src={crosshair} className="crosshair" alt=""/>
   )
 }
 

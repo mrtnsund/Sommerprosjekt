@@ -13,6 +13,8 @@ import "./marker.css";
 import markerService from "../services/markerServices";
 import Crosshair from "./Crosshair";
 import "./crosshair.css";
+import FabMapButton from "./FabMapButton";
+
 require("dotenv").config();
 
 export default class PureMap extends PureComponent {
@@ -70,7 +72,7 @@ export default class PureMap extends PureComponent {
     }
   };
 
-  componentDidMount() {
+  addNavigationControl() {
     const map = this.mapRef.current.getMap();
     const directions = new MapboxDirections({
       accessToken: process.env.REACT_APP_API_TOKEN,
@@ -79,12 +81,14 @@ export default class PureMap extends PureComponent {
     });
 
     map.addControl(directions, "top-left");
+  }
+
+  componentDidMount() {
+    this.addNavigationControl();
 
     markerService.getMarkers().then((markerLocations: any) => {
       this.setState({ markerLocations });
     });
-
-    
   }
 
   render() {
@@ -99,11 +103,13 @@ export default class PureMap extends PureComponent {
           mapStyle="mapbox://styles/mapbox/streets-v11"
           onViewportChange={(viewport) => this.setState({ viewport })}
           attributionControl={false}
-          onClick={this.addCenterMarker}
         >
-        <Crosshair/>
+          <Crosshair />
+          <FabMapButton
+            addMarker={this.addCenterMarker}
+          />
 
-          <div style={{ position: "absolute", right: 3, marginTop: "100%" }}>
+          <div style={{ position: "absolute", right: 3, marginTop: "50%" }}>
             <NavigationControl />
             <GeolocateControl
               positionOptions={{ enableHighAccuracy: true }}

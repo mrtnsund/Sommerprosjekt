@@ -23,7 +23,7 @@ const MapView: React.FC = () => {
       </IonHeader>
 
       <IonContent class="map-page">
-        <PureMap />
+        <PureMap/>
       </IonContent>
     </IonPage>
   );
