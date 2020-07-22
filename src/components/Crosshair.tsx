@@ -1,5 +1,5 @@
 import React from 'react';
-import './crosshair.css';
+import '../styles/crosshair.css';
 import crosshair from '../images/red-crosshair.png'
 
 

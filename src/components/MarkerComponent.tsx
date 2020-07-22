@@ -1,9 +1,8 @@
 import React, { PureComponent } from "react";
-import { Marker, Popup } from "react-map-gl";
-import "./marker.css";
+import { Marker } from "react-map-gl";
+import "../styles/marker.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import markerImg from "../images/marker.png";
-import MarkerInfo from "./MarkerInfo";
 
 interface MarkerProps {
   id: number;

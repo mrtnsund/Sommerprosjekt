@@ -11,7 +11,7 @@ import {
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { mapOutline, homeOutline, carOutline } from "ionicons/icons";
-import "./Menu.css";
+import "../styles/Menu.css";
 
 interface Pages {
   title: string;
