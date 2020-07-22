@@ -21,7 +21,17 @@
 .ellipsisIcon, .pinIcon, .flagIcon {
   font-size: 20px;
 }
-
+.flagIcon {
+  padding-right: 20px;
+  padding-left: 50px;
+}
+.pinIcon {
+  padding-right: 50px;
+  padding-left: 20px;
+}
+.ellipsisIcon {
+  margin: 0 auto;
+}
 .destination {
   color: #757575;
 }

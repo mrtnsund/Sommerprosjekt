@@ -1,6 +1,6 @@
 import { IonCard, IonCardHeader, IonItem, IonIcon, IonCardSubtitle, IonCardContent } from "@ionic/react";
 import React from "react";
-import { archiveSharp, pencilSharp, trashSharp, caretDownSharp, flagOutline, pinOutline, ellipsisVertical, pin, flag } from "ionicons/icons";
+import { archiveSharp, pencilSharp, trashSharp, caretDownSharp, flagOutline, pinOutline, ellipsisVertical, pin, flag, ellipsisHorizontal } from "ionicons/icons";
 
 const RoutesPageCard = () => {
     return (
@@ -14,15 +14,11 @@ const RoutesPageCard = () => {
           </IonCardSubtitle>
           </IonItem>
           <IonItem lines="none">
-            <IonIcon slot="start" icon={pin} className="pinIcon"/>
-            <p className="destination">Bergen</p>
-          </IonItem>
-          <IonItem lines="none">
-            <IonIcon slot="start" icon={ellipsisVertical} className="ellipsisIcon"/> 
-          </IonItem>
-          <IonItem lines="none">
-            <IonIcon slot="start" icon={flag} className="flagIcon"/>
-            <p className="destination">Stavanger</p>
+              <IonIcon icon={pin} className="pinIcon"/>
+              <p className="destination">Bergen</p>
+              <IonIcon icon={ellipsisHorizontal} className="ellipsisIcon"/> 
+              <p className="destination">Stavanger</p>
+              <IonIcon icon={flag} className="flagIcon"/>
           </IonItem>
         </IonCardHeader>
 
