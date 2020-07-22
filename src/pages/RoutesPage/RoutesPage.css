@@ -23,15 +23,21 @@
 }
 .flagIcon {
   padding-right: 20px;
-  padding-left: 50px;
+  padding-left: 10px;
 }
 .pinIcon {
-  padding-right: 50px;
+  padding-right: 10px;
   padding-left: 20px;
 }
 .ellipsisIcon {
   margin: 0 auto;
 }
-.destination {
+.destinationTo, .destinationFrom {
   color: #757575;
+}
+.destinationFrom {
+  padding-left: 20px;
+}
+.destinationTo {
+  padding-right: 20px;
 }

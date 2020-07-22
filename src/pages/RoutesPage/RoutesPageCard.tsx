@@ -11,15 +11,18 @@ const RoutesPageCard = () => {
             <IonIcon slot="end" icon={pencilSharp} className="editIcon"/>
             <IonIcon slot="end" icon={trashSharp} className="deleteIcon"/>
           <IonCardSubtitle>
-          </IonCardSubtitle>
-          </IonItem>
           <IonItem lines="none">
               <IonIcon icon={pin} className="pinIcon"/>
-              <p className="destination">Bergen</p>
+              <p className="destinationTo">Bergen</p>
+
               <IonIcon icon={ellipsisHorizontal} className="ellipsisIcon"/> 
-              <p className="destination">Stavanger</p>
+              <p className="destinationFrom">Stavanger</p>
               <IonIcon icon={flag} className="flagIcon"/>
+
           </IonItem>
+          </IonCardSubtitle>
+          </IonItem>
+
         </IonCardHeader>
 
         <IonCardContent>
