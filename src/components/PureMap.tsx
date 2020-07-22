@@ -14,6 +14,7 @@ import Crosshair from "./Crosshair";
 import FabMapButton from "./FabMapButton";
 import "./map.css";
 import { IonButton } from "@ionic/react";
+import { timeSharp } from "ionicons/icons";
 
 require("dotenv").config();
 
@@ -29,27 +30,7 @@ export default class PureMap extends PureComponent {
 
   mapRef = React.createRef<InteractiveMap>() as any;
 
-  addMarker = (event: any) => {
-    event.preventDefault();
-    let { markerLocations } = this.state;
-    const coordinates = event.lngLat;
-
-    let newid = 0;
-    if (markerLocations.length !== 0) {
-      newid = markerLocations.slice(-1)[0].id + 1;
-    }
-
-    const newMarker = {
-      id: newid,
-      longitude: coordinates[0],
-      latitude: coordinates[1],
-    };
-
-    markerLocations = [...markerLocations, newMarker];
-    this.setState({ markerLocations });
-  };
-
-  addCenterMarker = () => {
+  _addMarker = () => {
     const map = this.mapRef.current.getMap();
     let { lng, lat } = map.getCenter();
     let { markerLocations } = this.state;
@@ -65,6 +46,7 @@ export default class PureMap extends PureComponent {
         longitude: lng,
         latitude: lat,
       };
+
       markerService
         .create(newMarker)
         .then((returnedMarker) => {
@@ -79,7 +61,7 @@ export default class PureMap extends PureComponent {
     }
   };
 
-  addNavigationControl() {
+  addDirections() {
     const map = this.mapRef.current.getMap();
     const directions = new MapboxDirections({
       accessToken: process.env.REACT_APP_API_TOKEN,
@@ -90,35 +72,32 @@ export default class PureMap extends PureComponent {
     map.addControl(directions, "top-left");
   }
 
+  
+  _updateViewport = (viewport: any) => {
+    this.setState({ viewport });
+  };
+
+
+  _deleteMarker = (id:number) => {
+    let { markerLocations } = this.state;
+
+    markerService
+      .remove(id)
+      .then(returned => {
+        console.log(`deleted marker with id ${id}`)
+        markerLocations = markerLocations.filter((marker:any) => marker.id !== id);
+        this.setState({markerLocations});
+      })
+      .catch(error => console.log(error));
+  }
+
   componentDidMount() {
-    this.addNavigationControl();
+    this.addDirections();
 
     markerService.getAll().then((markerLocations: any) => {
       this.setState({ markerLocations });
     });
   }
-  _updateViewport = (viewport: any) => {
-    this.setState({ viewport });
-  };
-
-  deleteAll = () => {
-    let { markerLocations } = this.state;
-
-    console.log(markerLocations);
-    for (let i = 0; i < markerLocations.length; i++) {
-      let id = markerLocations[i].id;
-      console.log(id);
-
-      markerService
-        .remove(id)
-        .then((returned) => {
-          console.log("deleted: ", returned);
-          markerLocations = markerLocations.filter((m: any) => m.id !== id);
-          this.setState({ markerLocations });
-        })
-        .catch((error) => console.log(error));
-    }
-  };
 
   render() {
     return (
@@ -136,14 +115,8 @@ export default class PureMap extends PureComponent {
         >
           <MarkerComponent data={this.state.markerLocations} />
           <Crosshair />
-          <FabMapButton addMarker={this.addCenterMarker} />
-          <IonButton
-            shape="round"
-            style={{ marginTop: "40%" }}
-            onClick={this.deleteAll}
-          >
-            !!RemoveAllMarkers!!
-          </IonButton>
+          <FabMapButton addMarker={this._addMarker} />
+          
 
           <div style={{ position: "absolute", right: 25, marginTop: "14%" }}>
             <NavigationControl />
