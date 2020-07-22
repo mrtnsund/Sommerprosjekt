@@ -124,13 +124,13 @@ export default class PureMap extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div style={{position: "absolute", width: "100%", height: "100%"}}>
         <ReactMapGL
           className="mapContainer"
           ref={this.mapRef}
           {...this.state.viewport}
           width="100%"
-          height="78.5vh"
+          height="100%"
           mapboxApiAccessToken={process.env.REACT_APP_API_TOKEN}
           mapStyle="mapbox://styles/mapbox/streets-v11"
           onViewportChange={this._updateViewport}
@@ -147,7 +147,7 @@ export default class PureMap extends PureComponent {
             !!RemoveAllMarkers!!
           </IonButton>
 
-          <div style={{ position: "absolute", right: 3, marginTop: "50%" }}>
+          <div style={{ position: "relative", right: 3, marginTop: "50%" }}>
             <NavigationControl />
             <GeolocateControl
               positionOptions={{ enableHighAccuracy: true }}
