@@ -3,6 +3,7 @@ import ReactMapGL, {
   NavigationControl,
   GeolocateControl,
   InteractiveMap,
+  Popup,
 } from "react-map-gl";
 //@ts-ignore
 import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
@@ -12,9 +13,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import markerService from "../services/markerServices";
 import Crosshair from "./Crosshair";
 import FabMapButton from "./FabMapButton";
-import "./map.css";
-import { IonButton } from "@ionic/react";
-import { timeSharp } from "ionicons/icons";
+import MarkerInfo from "./MarkerInfo";
 
 require("dotenv").config();
 
@@ -26,6 +25,8 @@ export default class PureMap extends PureComponent {
       zoom: 8,
     },
     markerLocations: [] as any,
+    popupInfo: null as any
+
   };
 
   mapRef = React.createRef<InteractiveMap>() as any;
@@ -91,6 +92,29 @@ export default class PureMap extends PureComponent {
       .catch(error => console.log(error));
   }
 
+  _onClickMarker = (marker: any) => {
+    this.setState({popupInfo: marker});
+  };
+
+  _renderPopup() {
+    const {popupInfo} = this.state;
+
+    return (
+      popupInfo && (
+        <Popup
+          tipSize={5}
+          anchor="top"
+          longitude={popupInfo.longitude}
+          latitude={popupInfo.latitude}
+          closeOnClick={false}
+          onClose={() => this.setState({popupInfo: null})}
+        >
+          <MarkerInfo data={popupInfo} />
+        </Popup>
+      )
+    );
+  }
+
   componentDidMount() {
     this.addDirections();
 
@@ -103,7 +127,6 @@ export default class PureMap extends PureComponent {
     return (
       <div style={{ position: "absolute", width: "100%", height: "100%" }}>
         <ReactMapGL
-          className="mapContainer"
           ref={this.mapRef}
           {...this.state.viewport}
           width="100%"
@@ -113,7 +136,8 @@ export default class PureMap extends PureComponent {
           onViewportChange={this._updateViewport}
           attributionControl={false}
         >
-          <MarkerComponent data={this.state.markerLocations} />
+          <MarkerComponent data={this.state.markerLocations} onClick={this._onClickMarker}/>
+          {this._renderPopup()}
           <Crosshair />
           <FabMapButton addMarker={this._addMarker} />
           
