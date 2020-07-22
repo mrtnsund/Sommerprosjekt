@@ -115,16 +115,14 @@ export default class PureMap extends PureComponent {
           console.log("deleted: ", returned);
           markerLocations = markerLocations.filter((m: any) => m.id !== id);
           this.setState({ markerLocations });
-
         })
         .catch((error) => console.log(error));
     }
-
   };
 
   render() {
     return (
-      <div style={{position: "absolute", width: "100%", height: "100%"}}>
+      <div style={{ position: "absolute", width: "100%", height: "100%" }}>
         <ReactMapGL
           className="mapContainer"
           ref={this.mapRef}
@@ -147,7 +145,7 @@ export default class PureMap extends PureComponent {
             !!RemoveAllMarkers!!
           </IonButton>
 
-          <div style={{ position: "absolute", right: 25, marginTop: "14%"}}>
+          <div style={{ position: "absolute", right: 25, marginTop: "14%" }}>
             <NavigationControl />
             <GeolocateControl
               positionOptions={{ enableHighAccuracy: true }}
