@@ -5,3 +5,7 @@
 .editIcon:hover {
   color: #3880ff;
 }
+
+.deleteIcon, .archiveIcon, .editIcon {
+  font-size: 15px;
+}

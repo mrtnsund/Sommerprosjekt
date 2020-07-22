@@ -9,6 +9,7 @@ import {
   IonLabel,
   IonSegment,
   IonSegmentButton,
+  IonTitle,
 } from "@ionic/react";
 import './RoutesPage.css';
 import RoutesPageCard from "./RoutesPageCard";
@@ -28,21 +29,11 @@ const RoutesPage: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
           </IonButtons>
-          <IonSegment
-            onClick={() => toggleView()}
-            onIonChange={(e) => console.log('Segment selected', e.detail.value)}
-          >
-            <IonSegmentButton value="list">
-              <IonLabel>List</IonLabel>
-            </IonSegmentButton>
-            <IonSegmentButton value="map">
-              <IonLabel>Map</IonLabel>
-            </IonSegmentButton>
-          </IonSegment>
+          <IonTitle>Routes</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-      { (viewMap) ? <PureMap /> : <RoutesPageCard /> }
+        <RoutesPageCard />
       </IonContent>
     </IonPage>
   );
