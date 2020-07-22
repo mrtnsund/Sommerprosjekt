@@ -11,8 +11,8 @@ import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css";
 import MarkerComponent from "./MarkerComponent";
 import "mapbox-gl/dist/mapbox-gl.css";
 import markerService from "../services/markerServices";
-import Crosshair from "./Crosshair";
 import FabMapButton from "./FabMapButton";
+import Crosshair from "./Crosshair";
 import MarkerInfo from "./MarkerInfo";
 
 require("dotenv").config();
@@ -25,8 +25,7 @@ export default class PureMap extends PureComponent {
       zoom: 8,
     },
     markerLocations: [] as any,
-    popupInfo: null as any
-
+    popupInfo: null as any,
   };
 
   mapRef = React.createRef<InteractiveMap>() as any;
@@ -62,7 +61,7 @@ export default class PureMap extends PureComponent {
     }
   };
 
-  addDirections() {
+  _addDirections() {
     const map = this.mapRef.current.getMap();
     const directions = new MapboxDirections({
       accessToken: process.env.REACT_APP_API_TOKEN,
@@ -73,31 +72,31 @@ export default class PureMap extends PureComponent {
     map.addControl(directions, "top-left");
   }
 
-  
   _updateViewport = (viewport: any) => {
     this.setState({ viewport });
   };
 
-
-  _deleteMarker = (id:number) => {
+  _deleteMarker = (id: number) => {
     let { markerLocations } = this.state;
 
     markerService
       .remove(id)
-      .then(returned => {
-        console.log(`deleted marker with id ${id}`)
-        markerLocations = markerLocations.filter((marker:any) => marker.id !== id);
-        this.setState({markerLocations});
+      .then((returned) => {
+        console.log(`deleted marker with id ${id}`);
+        markerLocations = markerLocations.filter(
+          (marker: any) => marker.id !== id
+        );
+        this.setState({ markerLocations });
       })
-      .catch(error => console.log(error));
-  }
+      .catch((error) => console.log(error));
+  };
 
   _onClickMarker = (marker: any) => {
-    this.setState({popupInfo: marker});
+    this.setState({ popupInfo: marker });
   };
 
   _renderPopup() {
-    const {popupInfo} = this.state;
+    const { popupInfo } = this.state;
 
     return (
       popupInfo && (
@@ -107,7 +106,7 @@ export default class PureMap extends PureComponent {
           longitude={popupInfo.longitude}
           latitude={popupInfo.latitude}
           closeOnClick={false}
-          onClose={() => this.setState({popupInfo: null})}
+          onClose={() => this.setState({ popupInfo: null })}
         >
           <MarkerInfo data={popupInfo} />
         </Popup>
@@ -116,7 +115,7 @@ export default class PureMap extends PureComponent {
   }
 
   componentDidMount() {
-    this.addDirections();
+    this._addDirections();
 
     markerService.getAll().then((markerLocations: any) => {
       this.setState({ markerLocations });
@@ -136,11 +135,13 @@ export default class PureMap extends PureComponent {
           onViewportChange={this._updateViewport}
           attributionControl={false}
         >
-          <MarkerComponent data={this.state.markerLocations} onClick={this._onClickMarker}/>
+          <MarkerComponent
+            data={this.state.markerLocations}
+            onClick={this._onClickMarker}
+          />
           {this._renderPopup()}
           <Crosshair />
           <FabMapButton addMarker={this._addMarker} />
-          
 
           <div style={{ position: "absolute", right: 25, marginTop: "14%" }}>
             <NavigationControl />
