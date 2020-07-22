@@ -9,3 +9,19 @@
 .deleteIcon, .archiveIcon, .editIcon {
   font-size: 15px;
 }
+
+.expandIcon {
+
+}
+
+.expandIcon:hover {
+  color: #3880ff;
+}
+
+.ellipsisIcon, .pinIcon, .flagIcon {
+  font-size: 20px;
+}
+
+.destination {
+  color: #757575;
+}
