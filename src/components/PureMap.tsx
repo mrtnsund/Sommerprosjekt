@@ -147,7 +147,7 @@ export default class PureMap extends PureComponent {
             !!RemoveAllMarkers!!
           </IonButton>
 
-          <div style={{ position: "relative", right: 3, marginTop: "50%" }}>
+          <div style={{ position: "absolute", right: 25, marginTop: "14%"}}>
             <NavigationControl />
             <GeolocateControl
               positionOptions={{ enableHighAccuracy: true }}
