@@ -8,7 +8,6 @@ import {
   IonButtons,
 } from "@ionic/react";
 import React from "react";
-import { NewMarkerModal } from "../components/SaveMarkerModal";
 
 const DashboardPage: React.FC = () => {
   return (
@@ -23,7 +22,6 @@ const DashboardPage: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <h1>Welcome to the Dashboard</h1>
-        <NewMarkerModal/>
       </IonContent>
     </IonPage>
   );
