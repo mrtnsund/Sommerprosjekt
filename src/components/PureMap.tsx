@@ -22,7 +22,7 @@ export default class PureMap extends PureComponent {
     viewport: {
       longitude: 5.3242,
       latitude: 60.393,
-      zoom: 8,
+      zoom: 7,
     },
     markerLocations: [] as any,
     popupInfo: null as any,
@@ -30,9 +30,11 @@ export default class PureMap extends PureComponent {
 
   mapRef = React.createRef<InteractiveMap>() as any;
 
+
   _addMarker = () => {
     const map = this.mapRef.current.getMap();
     let { lng, lat } = map.getCenter();
+    
     let { markerLocations } = this.state;
 
     let newid = 0;
@@ -134,14 +136,16 @@ export default class PureMap extends PureComponent {
           mapStyle="mapbox://styles/mapbox/streets-v11"
           onViewportChange={this._updateViewport}
           attributionControl={false}
+         
         >
           <MarkerComponent
             data={this.state.markerLocations}
             onClick={this._onClickMarker}
           />
+          
           {this._renderPopup()}
           <Crosshair />
-          <FabMapButton addMarker={this._addMarker} />
+          <FabMapButton addMarker={this._addMarker} mapRef={this.mapRef}/>
 
           <div style={{ position: "absolute", right: 25, marginTop: "14%" }}>
             <NavigationControl />
