@@ -27,7 +27,7 @@ export default class Markers extends PureComponent<{ data: any, onClick: any }> 
         offsetLeft={-20}
         offsetTop={-40}
       >
-        <img className="marker" src={markerImg} onClick={() => onClick(marker)}></img>
+        <img className="marker" src={markerImg} onClick={() => onClick(marker)} alt=""></img>
 
       </Marker>
     ));
