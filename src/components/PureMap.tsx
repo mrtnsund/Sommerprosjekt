@@ -11,7 +11,7 @@ import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css";
 import MarkerComponent from "./MarkerComponent";
 import "mapbox-gl/dist/mapbox-gl.css";
 import markerService from "../services/markerServices";
-import FabMapButton from "./FabMapButton";
+import FabMapButton from "./MapAddButton";
 import Crosshair from "./Crosshair";
 import MarkerInfo from "./MarkerInfo";
 

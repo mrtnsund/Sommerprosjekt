@@ -15,7 +15,7 @@ import { add, flagOutline } from "ionicons/icons";
 import "../styles/savemarkermodal.css";
 import locationService from "../services/locationServices"
 
-const FabMapButton: React.FC<{ addMarker: any; mapRef: any }> = ({
+const MapAddButton: React.FC<{ addMarker: any; mapRef: any }> = ({
   addMarker,
   mapRef,
 }) => {
@@ -41,7 +41,7 @@ const FabMapButton: React.FC<{ addMarker: any; mapRef: any }> = ({
         setPlaceName(loc.features[0].place_name)
       })
       .catch(error => {
-        return
+        setPlaceName("No location found.")
       })
   };
 
@@ -53,7 +53,7 @@ const FabMapButton: React.FC<{ addMarker: any; mapRef: any }> = ({
         onDidDismiss={() => setShowModal(false)}
       >
         <p>
-          Stedsnavn: {placeName}
+          Location: {placeName}
           <br/>
           Longitude: {coordinates.lng}
           <br />
@@ -92,4 +92,4 @@ const FabMapButton: React.FC<{ addMarker: any; mapRef: any }> = ({
   );
 };
 
-export default FabMapButton;
+export default MapAddButton;
