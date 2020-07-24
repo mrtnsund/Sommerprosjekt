@@ -13,14 +13,16 @@ import {
 } from "@ionic/react";
 import { add, flagOutline } from "ionicons/icons";
 import "../styles/savemarkermodal.css";
+import locationService from "../services/locationServices"
 
 const FabMapButton: React.FC<{ addMarker: any; mapRef: any }> = ({
   addMarker,
   mapRef,
 }) => {
   const [showModal, setShowModal] = useState(false);
-  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
+  const [coordinates, setCoordinates] = useState({ lng: 0, lat: 0 });
   const [showAddedToast, setShowAddedToast] = useState(false);
+  const [placeName, setPlaceName] = useState("") as any
 
   const saveMarker = () => {
     addMarker();
@@ -29,9 +31,18 @@ const FabMapButton: React.FC<{ addMarker: any; mapRef: any }> = ({
   };
 
   const openModal = () => {
-    let { latitude, longitude } = mapRef.current.props;
-    setCoordinates({ lat: latitude, lng: longitude });
+    let { longitude, latitude } = mapRef.current.props;
+    setCoordinates({ lng: longitude, lat: latitude });
     setShowModal(true);
+    
+    locationService
+      .getLocation(longitude, latitude)
+      .then((loc: any) => {
+        setPlaceName(loc.features[0].place_name)
+      })
+      .catch(error => {
+        return
+      })
   };
 
   return (
@@ -42,6 +53,8 @@ const FabMapButton: React.FC<{ addMarker: any; mapRef: any }> = ({
         onDidDismiss={() => setShowModal(false)}
       >
         <p>
+          Stedsnavn: {placeName}
+          <br/>
           Longitude: {coordinates.lng}
           <br />
           Latitude: {coordinates.lat}
