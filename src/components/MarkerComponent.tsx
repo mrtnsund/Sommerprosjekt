@@ -7,6 +7,7 @@ import markerImg from "../images/marker.png";
 interface MarkerProps {
   id: number;
   name: string;
+  description: string;
   longitude: number;
   latitude: number;
 }

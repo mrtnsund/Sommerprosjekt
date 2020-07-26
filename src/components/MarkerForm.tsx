@@ -5,6 +5,7 @@ import {
   IonItem,
   IonInput,
   IonButton,
+  IonLabel,
 } from "@ionic/react";
 import markerService from "../services/markerServices";
 
@@ -20,6 +21,7 @@ export const MarkerForm: React.FC<{
   updateMarkers,
 }) => {
   const [pointName, setPointName] = useState<string>();
+  const [description, setDescription] = useState<string>();
 
   const addMarker = () => {
     let { lng, lat } = markerCoordinates;
@@ -33,6 +35,7 @@ export const MarkerForm: React.FC<{
       const newMarker = {
         id: newid,
         name: pointName,
+        description: description,
         longitude: lng,
         latitude: lat,
       };
@@ -60,12 +63,23 @@ export const MarkerForm: React.FC<{
   return (
     <form onSubmit={handleSubmit}>
       <IonList>
-        <IonItemDivider>Name of Point of Interest</IonItemDivider>
+        <IonItemDivider></IonItemDivider>
         <IonItem>
+          <IonLabel position="floating">Name of Location</IonLabel>
           <IonInput
             value={pointName}
-            placeholder="Enter input..."
+            placeholder={"Name of location..."}
             onIonChange={(e) => setPointName(e.detail.value!)}
+            clearInput
+          ></IonInput>
+        </IonItem>
+        <IonItemDivider></IonItemDivider>
+        <IonItem>
+        <IonLabel position="floating">Description</IonLabel>
+          <IonInput
+            value={description}
+            placeholder="Give a good description..."
+            onIonChange={(e) => setDescription(e.detail.value!)}
             clearInput
           ></IonInput>
         </IonItem>

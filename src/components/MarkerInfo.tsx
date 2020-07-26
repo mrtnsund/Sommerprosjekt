@@ -9,9 +9,11 @@ export default class MarkerInfo extends PureComponent<{ data: any }> {
     return (
       <div>
         <div>
-          {data.name}
+          <p>Name: {data.name}</p>
           <br/>
-          {coordinates} {' '}
+          <p>Description: {data.description}</p>
+          <br/>
+          <p>Coordinates: {coordinates} {' '}</p>
           
         </div>
       </div>

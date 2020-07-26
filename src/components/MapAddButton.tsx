@@ -10,17 +10,18 @@ import {
   IonToast,
   IonToolbar,
   IonTitle,
+  IonContent,
 } from "@ionic/react";
 import { add, flagOutline } from "ionicons/icons";
 import "../styles/savemarkermodal.css";
 import locationService from "../services/locationServices";
 import { MarkerForm } from "./MarkerForm";
 
-const MapAddButton: React.FC<{ mapRef: any; markerLocations: any, updateMarkers: any }> = ({
-  mapRef,
-  markerLocations,
-  updateMarkers
-}) => {
+const MapAddButton: React.FC<{
+  mapRef: any;
+  markerLocations: any;
+  updateMarkers: any;
+}> = ({ mapRef, markerLocations, updateMarkers }) => {
   const [showModal, setShowModal] = useState(false);
   const [coordinates, setCoordinates] = useState({ lng: 0, lat: 0 });
   const [showAddedToast, setShowAddedToast] = useState(false);
@@ -53,28 +54,31 @@ const MapAddButton: React.FC<{ mapRef: any; markerLocations: any, updateMarkers:
         cssClass="my-custom-class"
         onDidDismiss={() => setShowModal(false)}
       >
-        <p>
-          Location: {placeName}
-          <br />
-          Longitude: {coordinates.lng}
-          <br />
-          Latitude: {coordinates.lat}
-        </p>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Add new marker</IonTitle>
-            <IonButton slot="end" onClick={() => setShowModal(false)}>
-              close
-            </IonButton>
-          </IonToolbar>
-        </IonHeader>
+        <IonContent>
+          
+          <IonHeader>
+            <IonToolbar>
+              <IonTitle>Add new marker</IonTitle>
+              <IonButton slot="end" onClick={() => setShowModal(false)}>
+                close
+              </IonButton>
+            </IonToolbar>
+          </IonHeader>
+          <p>
+            Nearest location: {placeName}
+            <br />
+            Longitude: {coordinates.lng}
+            <br />
+            Latitude: {coordinates.lat}
+          </p>
 
-        <MarkerForm
-          markerCoordinates={coordinates}
-          handleSaveClick={closeModalAndToast}
-          markerLocations={markerLocations}
-          updateMarkers={updateMarkers}
-        />
+          <MarkerForm
+            markerCoordinates={coordinates}
+            handleSaveClick={closeModalAndToast}
+            markerLocations={markerLocations}
+            updateMarkers={updateMarkers}
+          />
+        </IonContent>
       </IonModal>
       <IonToast
         isOpen={showAddedToast}
