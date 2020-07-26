@@ -2,41 +2,10 @@
   "markers": [
     {
       "id": 1,
-      "name": "Børgen",
-      "longitude": 5.39008412416534,
-      "latitude": 60.393000000000015
-    },
-    {
-      "id": 2,
-      "name": "TYSSE!!!",
-      "longitude": 5.735975776034363,
-      "latitude": 60.34950603198355
-    },
-    {
-      "id": 3,
-      "name": "NTVG",
-      "longitude": 5.763427494436906,
-      "latitude": 60.08457860531557
-    },
-    {
-      "id": 4,
-      "name": "Kul plass",
-      "longitude": 6.131280521030375,
-      "latitude": 60.44728586698102
-    },
-    {
-      "id": 5,
-      "name": "Kullllll",
-      "description": "Kuleeste",
-      "longitude": 5.472439279372662,
-      "latitude": 60.33862346725775
-    },
-    {
-      "id": 6,
-      "name": "Vossevangen",
-      "description": "Amazing area with mountains and beautiful scenery. Must see!",
-      "longitude": 6.44423011081769,
-      "latitude": 60.62848424129785
+      "name": "Kaland",
+      "description": "Veldig kal plass",
+      "longitude": 5.51675473970079,
+      "latitude": 60.36156165100359
     }
   ]
 }
