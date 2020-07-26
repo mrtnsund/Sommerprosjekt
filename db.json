@@ -2,13 +2,21 @@
   "markers": [
     {
       "id": 1,
-      "longitude": 5.445049609374158,
-      "latitude": 60.22152435184954
+      "name": "Børgen",
+      "longitude": 5.39008412416534,
+      "latitude": 60.393000000000015
     },
     {
       "id": 2,
-      "longitude": 5.543926562499149,
-      "latitude": 60.35089499632276
+      "name": "TYSSE!!!",
+      "longitude": 5.735975776034363,
+      "latitude": 60.34950603198355
+    },
+    {
+      "id": 3,
+      "name": "NTVG",
+      "longitude": 5.763427494436906,
+      "latitude": 60.08457860531557
     }
   ]
 }

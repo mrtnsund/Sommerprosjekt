@@ -11,7 +11,7 @@ import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css";
 import MarkerComponent from "./MarkerComponent";
 import "mapbox-gl/dist/mapbox-gl.css";
 import markerService from "../services/markerServices";
-import FabMapButton from "./MapAddButton";
+import MapAddButton from "./MapAddButton";
 import Crosshair from "./Crosshair";
 import MarkerInfo from "./MarkerInfo";
 
@@ -30,11 +30,18 @@ export default class PureMap extends PureComponent {
 
   mapRef = React.createRef<InteractiveMap>() as any;
 
+  _updateMarkerLocations = (newMarker: any) => {
+    let { markerLocations } = this.state;
+
+    markerLocations = [...markerLocations, newMarker];
+
+    this.setState({ markerLocations });
+  };
 
   _addMarker = () => {
     const map = this.mapRef.current.getMap();
     let { lng, lat } = map.getCenter();
-    
+
     let { markerLocations } = this.state;
 
     let newid = 0;
@@ -45,6 +52,7 @@ export default class PureMap extends PureComponent {
     if (lng !== undefined && lat !== undefined) {
       const newMarker = {
         id: newid,
+        name: "",
         longitude: lng,
         latitude: lat,
       };
@@ -136,16 +144,19 @@ export default class PureMap extends PureComponent {
           mapStyle="mapbox://styles/mapbox/streets-v11"
           onViewportChange={this._updateViewport}
           attributionControl={false}
-         
         >
           <MarkerComponent
             data={this.state.markerLocations}
             onClick={this._onClickMarker}
           />
-          
+
           {this._renderPopup()}
           <Crosshair />
-          <FabMapButton addMarker={this._addMarker} mapRef={this.mapRef}/>
+          <MapAddButton
+            mapRef={this.mapRef}
+            markerLocations={this.state.markerLocations}
+            updateMarkers={this._updateMarkerLocations}
+          />
 
           <div style={{ position: "absolute", right: 25, marginTop: "14%" }}>
             <NavigationControl />
