@@ -125,7 +125,7 @@ export default class PureMap extends PureComponent {
   }
 
   componentDidMount() {
-    this._addDirections();
+    //this._addDirections();
 
     markerService.getAll().then((markerLocations: any) => {
       this.setState({ markerLocations });
@@ -158,7 +158,7 @@ export default class PureMap extends PureComponent {
             updateMarkers={this._updateMarkerLocations}
           />
 
-          <div style={{ position: "absolute", right: 25, marginTop: "14%" }}>
+          <div style={{ position: "absolute", right: 3, marginTop: "4%" }}>
             <NavigationControl />
             <GeolocateControl
               positionOptions={{ enableHighAccuracy: true }}

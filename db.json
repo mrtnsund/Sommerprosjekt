@@ -6,6 +6,13 @@
       "description": "Veldig kal plass",
       "longitude": 5.51675473970079,
       "latitude": 60.36156165100359
+    },
+    {
+      "id": 2,
+      "name": "Ingrid's favorite place",
+      "description": "This a  cool place",
+      "longitude": 5.9559138671882925,
+      "latitude": 60.83010284929469
     }
   ]
 }
