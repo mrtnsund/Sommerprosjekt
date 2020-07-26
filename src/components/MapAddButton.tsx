@@ -10,10 +10,6 @@ import {
   IonToast,
   IonToolbar,
   IonTitle,
-  IonList,
-  IonItemDivider,
-  IonItem,
-  IonInput,
 } from "@ionic/react";
 import { add, flagOutline } from "ionicons/icons";
 import "../styles/savemarkermodal.css";
