@@ -13,6 +13,22 @@
       "description": "This a  cool place",
       "longitude": 5.9559138671882925,
       "latitude": 60.83010284929469
+    },
+    {
+      "id": 3,
+      "name": "Oseana",
+      "nearestLocation": "Os, Vestland, Norway",
+      "description": "Veldig god mat her. Jeg liker god mat. Derfor synes jeg dette var en fin plass å spise på.",
+      "longitude": 5.527447070310964,
+      "latitude": 60.267802462624836
+    },
+    {
+      "id": 4,
+      "name": "abc",
+      "nearestLocation": "Lonevåg, Vestland, Norway",
+      "description": "abcd",
+      "longitude": 5.565899218750997,
+      "latitude": 60.515011779049665
     }
   ]
 }
