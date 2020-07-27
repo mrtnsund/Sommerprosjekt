@@ -29,6 +29,14 @@
       "description": "abcd",
       "longitude": 5.565899218750997,
       "latitude": 60.515011779049665
+    },
+    {
+      "id": 5,
+      "name": "Stavanger",
+      "nearestLocation": "Stavanger, Rogaland, Norway",
+      "description": "Hjemmet til Morten",
+      "longitude": 5.732620439573728,
+      "latitude": 58.96359331776475
     }
   ]
 }
