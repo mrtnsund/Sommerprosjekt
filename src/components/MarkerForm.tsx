@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   IonList,
-  IonItemDivider,
   IonItem,
   IonInput,
   IonButton,
@@ -11,11 +10,13 @@ import markerService from "../services/markerServices";
 
 export const MarkerForm: React.FC<{
   markerCoordinates: any;
+  nearestPlace: any;
   markerLocations: any;
   handleSaveClick: any;
   updateMarkers: any;
 }> = ({
   markerCoordinates,
+  nearestPlace,
   markerLocations,
   handleSaveClick,
   updateMarkers,
@@ -35,6 +36,7 @@ export const MarkerForm: React.FC<{
       const newMarker = {
         id: newid,
         name: pointName,
+        nearestLocation: nearestPlace,
         description: description,
         longitude: lng,
         latitude: lat,
@@ -63,7 +65,6 @@ export const MarkerForm: React.FC<{
   return (
     <form onSubmit={handleSubmit}>
       <IonList>
-        <IonItemDivider></IonItemDivider>
         <IonItem>
           <IonLabel position="floating">Name of Location</IonLabel>
           <IonInput
@@ -73,9 +74,8 @@ export const MarkerForm: React.FC<{
             clearInput
           ></IonInput>
         </IonItem>
-        <IonItemDivider></IonItemDivider>
         <IonItem>
-        <IonLabel position="floating">Description</IonLabel>
+          <IonLabel position="floating">Description</IonLabel>
           <IonInput
             value={description}
             placeholder="Give a good description..."
