@@ -88,7 +88,12 @@ export default class PureMap extends PureComponent {
 
   _addDirections() {
     const map = this.mapRef.current.getMap();
-    map.addControl(this.directions, "top-left");
+    try{
+      map.addControl(this.directions, "top-left");
+
+    }catch(error){
+      alert("Could not add directions")
+    }
   }
 
   _removeDirections() {
