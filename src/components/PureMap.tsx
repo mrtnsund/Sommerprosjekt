@@ -39,6 +39,12 @@ export default class PureMap extends PureComponent {
 
   mapRef = React.createRef<InteractiveMap>() as any;
 
+  directions = new MapboxDirections({
+    accessToken: process.env.REACT_APP_API_TOKEN,
+    unit: "metric",
+    profile: "mapbox/driving",
+  });
+
   _updateMarkerLocations = (newMarker: any) => {
     let { markerLocations } = this.state;
 
@@ -82,13 +88,19 @@ export default class PureMap extends PureComponent {
 
   _addDirections() {
     const map = this.mapRef.current.getMap();
-    const directions = new MapboxDirections({
-      accessToken: process.env.REACT_APP_API_TOKEN,
-      unit: "metric",
-      profile: "mapbox/driving",
-    });
+    map.addControl(this.directions, "top-left");
+  }
 
-    map.addControl(directions, "top-left");
+  _removeDirections() {
+    const map = this.mapRef.current.getMap();
+
+    try{
+      map.removeControl(this.directions);
+
+    }catch(error) {
+      alert("Cannot remove route that doesn't exist...")
+      return
+    }
   }
 
   _updateViewport = (viewport: any) => {
@@ -121,11 +133,8 @@ export default class PureMap extends PureComponent {
   _renderPopup() {
     const { popupInfo } = this.state;
 
-    
-
     return (
       popupInfo && (
-       
         <IonModal
           isOpen={this.state.showModalPopup}
           cssClass="custom-height"
@@ -154,8 +163,6 @@ export default class PureMap extends PureComponent {
   }
 
   componentDidMount() {
-    //this._addDirections();
-
     markerService.getAll().then((markerLocations: any) => {
       this.setState({ markerLocations });
     });
@@ -185,6 +192,8 @@ export default class PureMap extends PureComponent {
             mapRef={this.mapRef}
             markerLocations={this.state.markerLocations}
             updateMarkers={this._updateMarkerLocations}
+            openDirections={() => this._addDirections()}
+            removeDirections={() => this._removeDirections()}
           />
 
           <div style={{ position: "absolute", right: 3, marginTop: "4%" }}>

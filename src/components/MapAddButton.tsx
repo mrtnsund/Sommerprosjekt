@@ -12,7 +12,7 @@ import {
   IonTitle,
   IonContent,
 } from "@ionic/react";
-import { add, flagOutline } from "ionicons/icons";
+import { add, flagOutline, carOutline, trashOutline } from "ionicons/icons";
 import "../styles/popupmodal.css";
 import locationService from "../services/locationServices";
 import { MarkerForm } from "./MarkerForm";
@@ -21,7 +21,9 @@ const MapAddButton: React.FC<{
   mapRef: any;
   markerLocations: any;
   updateMarkers: any;
-}> = ({ mapRef, markerLocations, updateMarkers }) => {
+  openDirections: any;
+  removeDirections: any;
+}> = ({ mapRef, markerLocations, updateMarkers, openDirections, removeDirections }) => {
   const [showModal, setShowModal] = useState(false);
   const [coordinates, setCoordinates] = useState({ lng: 0, lat: 0 });
   const [showAddedToast, setShowAddedToast] = useState(false);
@@ -46,6 +48,12 @@ const MapAddButton: React.FC<{
         setPlaceName("No location found.");
       });
   };
+
+  const testMapRef = () => {
+    console.log(mapRef.current.getMap());
+    const map = mapRef.current.getMap();
+    openDirections(map)
+  }
 
   return (
     <IonFab vertical="bottom" horizontal="end" slot="fixed">
@@ -94,6 +102,12 @@ const MapAddButton: React.FC<{
       <IonFabList side="top">
         <IonFabButton onClick={() => openModal()}>
           <IonIcon icon={flagOutline} />
+        </IonFabButton>
+        <IonFabButton onClick={openDirections}>
+          <IonIcon icon={carOutline} />
+        </IonFabButton>
+        <IonFabButton onClick={removeDirections}>
+          <IonIcon icon={trashOutline} />
         </IonFabButton>
       </IonFabList>
     </IonFab>
