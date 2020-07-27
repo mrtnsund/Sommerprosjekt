@@ -4,21 +4,14 @@ import "../styles/marker.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import markerImg from "../images/marker.png";
 
-interface MarkerProps {
-  id: number;
-  name: string;
-  description: string;
-  longitude: number;
-  latitude: number;
-}
 
 export default class Markers extends PureComponent<{ data: any, onClick: any }> {
 
-
   render() {
     const { data, onClick } = this.props;
+    
 
-    return data.map((marker: MarkerProps) => (
+    return data.map((marker: any) => (
       <Marker
         key={marker.id}
         longitude={marker.longitude}
@@ -30,6 +23,7 @@ export default class Markers extends PureComponent<{ data: any, onClick: any }> 
         offsetTop={-40}
       >
         <img className="marker" src={markerImg} onClick={() => onClick(marker)} alt=""></img>
+        
 
       </Marker>
     ));
