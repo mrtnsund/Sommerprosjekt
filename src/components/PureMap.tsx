@@ -93,6 +93,7 @@ export default class PureMap extends PureComponent {
 
     }catch(error){
       alert("Could not add directions")
+      return
     }
   }
 
