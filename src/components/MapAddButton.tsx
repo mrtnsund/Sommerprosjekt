@@ -13,7 +13,7 @@ import {
   IonContent,
 } from "@ionic/react";
 import { add, flagOutline } from "ionicons/icons";
-import "../styles/savemarkermodal.css";
+import "../styles/popupmodal.css";
 import locationService from "../services/locationServices";
 import { MarkerForm } from "./MarkerForm";
 
@@ -51,21 +51,21 @@ const MapAddButton: React.FC<{
     <IonFab vertical="bottom" horizontal="end" slot="fixed">
       <IonModal
         isOpen={showModal}
-        cssClass="my-custom-class"
+        cssClass="custom-height"
         onDidDismiss={() => setShowModal(false)}
       >
         <IonContent>
           
           <IonHeader>
             <IonToolbar>
-              <IonTitle>Add new marker</IonTitle>
+              <IonTitle>Add New Marker</IonTitle>
               <IonButton slot="end" onClick={() => setShowModal(false)}>
                 close
               </IonButton>
             </IonToolbar>
           </IonHeader>
           <p>
-            Nearest location: {placeName}
+            Near: {placeName}
             <br />
             Longitude: {coordinates.lng}
             <br />
@@ -74,6 +74,7 @@ const MapAddButton: React.FC<{
 
           <MarkerForm
             markerCoordinates={coordinates}
+            nearestPlace={placeName}
             handleSaveClick={closeModalAndToast}
             markerLocations={markerLocations}
             updateMarkers={updateMarkers}
