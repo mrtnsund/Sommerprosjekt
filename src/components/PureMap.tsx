@@ -3,17 +3,25 @@ import ReactMapGL, {
   NavigationControl,
   GeolocateControl,
   InteractiveMap,
-  Popup,
 } from "react-map-gl";
 //@ts-ignore
 import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css";
-import MarkerComponent from "./MarkerComponent";
+import Markers from "./Markers";
 import "mapbox-gl/dist/mapbox-gl.css";
+import "../styles/popupmodal.css";
 import markerService from "../services/markerServices";
 import MapAddButton from "./MapAddButton";
 import Crosshair from "./Crosshair";
-import MarkerInfo from "./MarkerInfo";
+import {
+  IonModal,
+  IonContent,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonButton,
+  IonItem,
+} from "@ionic/react";
 
 require("dotenv").config();
 
@@ -26,6 +34,7 @@ export default class PureMap extends PureComponent {
     },
     markerLocations: [] as any,
     popupInfo: null as any,
+    showModalPopup: false as boolean,
   };
 
   mapRef = React.createRef<InteractiveMap>() as any;
@@ -103,23 +112,43 @@ export default class PureMap extends PureComponent {
 
   _onClickMarker = (marker: any) => {
     this.setState({ popupInfo: marker });
+    this.setState({ showModalPopup: true });
   };
+  _closeModal() {
+    this.setState({ showModalPopup: false });
+  }
 
   _renderPopup() {
     const { popupInfo } = this.state;
 
+    
+
     return (
       popupInfo && (
-        <Popup
-          tipSize={5}
-          anchor="top"
-          longitude={popupInfo.longitude}
-          latitude={popupInfo.latitude}
-          closeOnClick={false}
-          onClose={() => this.setState({ popupInfo: null })}
+       
+        <IonModal
+          isOpen={this.state.showModalPopup}
+          cssClass="custom-height"
+          onDidDismiss={() => this._closeModal()}
         >
-          <MarkerInfo data={popupInfo} />
-        </Popup>
+          <IonContent>
+            <IonHeader>
+              <IonToolbar>
+                <IonTitle>{popupInfo.name} </IonTitle>
+                <IonButton slot="end" onClick={() => this._closeModal()}>
+                  close
+                </IonButton>
+                <IonItem>
+                  Lng: {popupInfo.longitude}
+                  <br />
+                  Lat: {popupInfo.latitude}
+                </IonItem>
+              </IonToolbar>
+            </IonHeader>
+            <IonItem>Nearby: {popupInfo.nearestLocation}</IonItem>
+            <IonItem>Description: {popupInfo.description} </IonItem>
+          </IonContent>
+        </IonModal>
       )
     );
   }
@@ -145,7 +174,7 @@ export default class PureMap extends PureComponent {
           onViewportChange={this._updateViewport}
           attributionControl={false}
         >
-          <MarkerComponent
+          <Markers
             data={this.state.markerLocations}
             onClick={this._onClickMarker}
           />
