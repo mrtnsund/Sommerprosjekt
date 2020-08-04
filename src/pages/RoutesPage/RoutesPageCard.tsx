@@ -5,6 +5,8 @@ import {
   IonIcon,
   IonCardSubtitle,
   IonCardContent,
+  IonButton,
+  IonRouterOutlet,
 } from "@ionic/react";
 import React, { useState } from "react";
 import {
@@ -20,6 +22,8 @@ import {
   ellipsisHorizontal,
   caretUpSharp,
 } from "ionicons/icons";
+import { Route } from "react-router";
+import RoutesPageMap from "./RoutesPageMap";
 
 const RoutesPageCard = () => {
   const [expand, setExpand] = useState(false);
@@ -27,9 +31,19 @@ const RoutesPageCard = () => {
     if (expand) {
       return (
         <div>
+          <IonRouterOutlet>
+            <Route
+              path="/tabs/routes/map"
+              render={() => <RoutesPageMap />}
+              exact={true}
+            />
+          </IonRouterOutlet>
           <IonItem lines="none"></IonItem>
           <IonItem lines="none"></IonItem>
           <IonItem lines="none">
+            <IonButton slot="start" color="primary" href="/tabs/routes/map">
+              View on map
+            </IonButton>
             <IonIcon
               slot="end"
               icon={caretUpSharp}
