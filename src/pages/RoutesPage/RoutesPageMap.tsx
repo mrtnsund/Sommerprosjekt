@@ -1,16 +1,20 @@
 import React, {  } from "react";
 import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle } from "@ionic/react";
+import PureMap from "../../components/PureMap";
 
 const RoutesPageMap = () => {
     return (
-        <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton></IonMenuButton>
-          </IonButtons>
-          <IonTitle>Routes</IonTitle>
-        </IonToolbar>
-        </IonHeader>
+        <div>
+            <IonHeader>
+            <IonToolbar>
+            <IonButtons slot="start">
+                <IonMenuButton></IonMenuButton>
+            </IonButtons>
+            <IonTitle>Routes</IonTitle>
+            </IonToolbar>
+            </IonHeader>
+            <PureMap />
+        </div>
     )
 }
 

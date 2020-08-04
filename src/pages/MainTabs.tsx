@@ -12,6 +12,7 @@ import { Redirect, Route } from "react-router";
 import { homeOutline, mapOutline, carOutline } from "ionicons/icons";
 import MapView from "./MapView";
 import RoutesPage from "./RoutesPage/RoutesPage";
+import RoutesPageMap from "./RoutesPage/RoutesPageMap";
 
 interface MainTabsProps {}
 
@@ -36,6 +37,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
           render={() => <Redirect to="/tabs/dashboard" />}
         />
         <Route path="/tabs/routes" render={() => <RoutesPage />} exact={true} />
+        <Route path="/tabs/routes/map" render={() => <RoutesPageMap />} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="dashboard" href="/tabs/dashboard">
