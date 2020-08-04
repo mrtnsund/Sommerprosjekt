@@ -112,3 +112,12 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+.addButton {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+.addButtonText {
+  font-size: 14px;
+}

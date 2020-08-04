@@ -6,11 +6,12 @@ import {
   IonList,
   IonMenu,
   IonMenuToggle,
+  IonButton,
 } from "@ionic/react";
 
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { mapOutline, homeOutline, carOutline } from "ionicons/icons";
+import { mapOutline, homeOutline, carOutline, add } from "ionicons/icons";
 import "../styles/Menu.css";
 
 interface Pages {
@@ -48,6 +49,10 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList lines="none">{renderListitems(routes.appPages)}</IonList>
+        <IonButton expand="block" color="success" className="addButton" size="large">
+          <IonIcon icon={add}/>
+          <p className="addButtonText">Add a new route</p>
+        </IonButton>
       </IonContent>
     </IonMenu>
   );

@@ -21,6 +21,8 @@ import {
   flag,
   ellipsisHorizontal,
   caretUpSharp,
+  map,
+  mapOutline,
 } from "ionicons/icons";
 import { Route } from "react-router";
 import RoutesPageMap from "./RoutesPageMap";
@@ -41,8 +43,15 @@ const RoutesPageCard = () => {
           <IonItem lines="none"></IonItem>
           <IonItem lines="none"></IonItem>
           <IonItem lines="none">
-            <IonButton slot="start" color="primary" href="/tabs/routes/map">
-              View on map
+            <IonButton
+              slot="start"
+              color="light"
+              href="/tabs/routes/map"
+              size="small"
+              className="mapButton"
+            >
+              <IonIcon slot="start" icon={mapOutline} />
+              Mapview
             </IonButton>
             <IonIcon
               slot="end"
@@ -56,6 +65,16 @@ const RoutesPageCard = () => {
     } else {
       return (
         <IonItem lines="none">
+          <IonButton
+            slot="start"
+            color="light"
+            href="/tabs/routes/map"
+            size="small"
+            className="mapButton"
+          >
+            <IonIcon slot="start" icon={mapOutline} />
+            Mapview
+          </IonButton>
           <IonIcon
             slot="end"
             icon={caretDownSharp}
