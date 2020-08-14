@@ -16,7 +16,7 @@ export default class Markers extends PureComponent<{ data: any, onClick: any }> 
         key={marker.id}
         longitude={marker.longitude}
         latitude={marker.latitude}
-        //in order to add marker add proper location:
+        //in order to add marker at crosshair's location:
         //offsetLeft has to be -(half of the size of the icon).
         //offsetTop has to be -(size of the icon).
         offsetLeft={-20}
