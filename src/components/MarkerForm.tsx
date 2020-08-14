@@ -24,7 +24,10 @@ export const MarkerForm: React.FC<{
   const [pointName, setPointName] = useState<string>();
   const [description, setDescription] = useState<string>();
 
-  const addMarker = () => {
+  const addMarker = (event: any) => {
+    //stops page from refreshing after new marker is added.
+    event.preventDefault();
+
     let { lng, lat } = markerCoordinates;
 
     let newid = 0;
@@ -45,7 +48,7 @@ export const MarkerForm: React.FC<{
       markerService
         .create(newMarker)
         .then((returnedMarker) => {
-          console.log("added: ", returnedMarker);
+          console.log("new marker added: ", returnedMarker);
           updateMarkers(returnedMarker);
         })
         .catch((error) => console.log(error));
@@ -56,14 +59,8 @@ export const MarkerForm: React.FC<{
     }
   };
 
-  const handleSubmit = (event: any) => {
-    addMarker();
-
-    event.preventDefault();
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={addMarker}>
       <IonList>
         <IonItem>
           <IonLabel position="floating">Name of Location</IonLabel>
