@@ -9,11 +9,11 @@
 .deleteIcon, .archiveIcon, .editIcon {
   font-size: 15px;
 }
-
+/*
 .expandIcon {
 
 }
-
+*/
 .expandIcon:hover {
   color: #3880ff;
 }
