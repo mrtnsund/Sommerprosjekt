@@ -49,10 +49,7 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList lines="none">{renderListitems(routes.appPages)}</IonList>
-        <IonButton expand="block" color="success" className="addButton" size="large">
-          <IonIcon icon={add}/>
-          <p className="addButtonText">Add a new route</p>
-        </IonButton>
+        
       </IonContent>
     </IonMenu>
   );
