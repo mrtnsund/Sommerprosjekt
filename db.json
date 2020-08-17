@@ -13,6 +13,14 @@
       "description": "This a  cool place",
       "longitude": 5.9559138671882925,
       "latitude": 60.83010284929469
+    },
+    {
+      "id": 3,
+      "name": "Vossern",
+      "nearestLocation": "Voss, Vestland, Norway",
+      "description": "Halla",
+      "longitude": 6.3838363303320405,
+      "latitude": 60.56099152685255
     }
   ]
 }
