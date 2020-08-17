@@ -37,6 +37,24 @@
       "description": "Hjemmet til Morten",
       "longitude": 5.732620439573728,
       "latitude": 58.96359331776475
+    },
+    {
+      "id": 6,
+      "nearestLocation": "Røldal, Vestland, Norway",
+      "longitude": 6.727695432337616,
+      "latitude": 60.02518596808619
+    },
+    {
+      "id": 7,
+      "nearestLocation": "Voss, Vestland, Norway",
+      "longitude": 6.312461862483278,
+      "latitude": 60.54206827816807
+    },
+    {
+      "id": 8,
+      "nearestLocation": "Norheimsund, Vestland, Norway",
+      "longitude": 6.015983303741472,
+      "latitude": 60.433722894546925
     }
   ]
 }
