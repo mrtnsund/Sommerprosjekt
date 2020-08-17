@@ -6,7 +6,6 @@ import {
   IonCardSubtitle,
   IonCardContent,
   IonButton,
-  IonRouterOutlet,
 } from "@ionic/react";
 import React, { useState } from "react";
 import {
@@ -14,18 +13,12 @@ import {
   pencilSharp,
   trashSharp,
   caretDownSharp,
-  flagOutline,
-  pinOutline,
-  ellipsisVertical,
   pin,
   flag,
   ellipsisHorizontal,
   caretUpSharp,
-  map,
   mapOutline,
 } from "ionicons/icons";
-import { Route } from "react-router";
-import RoutesPageMap from "./RoutesPageMap";
 
 const RoutesPageCard = () => {
   const [expand, setExpand] = useState(false);

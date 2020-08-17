@@ -6,16 +6,12 @@ import {
   IonToolbar,
   IonButtons,
   IonMenuButton,
-  IonLabel,
-  IonSegment,
-  IonSegmentButton,
   IonTitle,
   IonButton,
   IonIcon,
 } from "@ionic/react";
 import './RoutesPage.css';
 import RoutesPageCard from "./RoutesPageCard";
-import PureMap from "../../components/PureMap";
 import { add } from "ionicons/icons";
 
 const RoutesPage: React.FC = () => {

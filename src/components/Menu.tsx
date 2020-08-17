@@ -6,12 +6,11 @@ import {
   IonList,
   IonMenu,
   IonMenuToggle,
-  IonButton,
 } from "@ionic/react";
 
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { mapOutline, homeOutline, carOutline, add } from "ionicons/icons";
+import { mapOutline, homeOutline, carOutline } from "ionicons/icons";
 import "../styles/Menu.css";
 
 interface Pages {
