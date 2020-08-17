@@ -33,7 +33,13 @@ const RoutesPageCard = () => {
     if (expand) {
       return (
         <div>
-          
+          <IonRouterOutlet>
+            <Route
+              path="/tabs/routes/map"
+              render={() => <RoutesPageMap />}
+              exact={true}
+            />
+          </IonRouterOutlet>
           <IonItem lines="none"></IonItem>
           <IonItem lines="none"></IonItem>
           <IonItem lines="none">
