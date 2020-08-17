@@ -49,11 +49,7 @@ const MapAddButton: React.FC<{
       });
   };
 
-  const testMapRef = () => {
-    console.log(mapRef.current.getMap());
-    const map = mapRef.current.getMap();
-    openDirections(map)
-  }
+  
 
   return (
     <IonFab vertical="bottom" horizontal="end" slot="fixed">
