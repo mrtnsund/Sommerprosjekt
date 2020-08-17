@@ -32,7 +32,7 @@ export default class PureMap extends PureComponent {
     viewport: {
       longitude: 5.3242,
       latitude: 60.393,
-      zoom: 7,
+      zoom: 6,
     },
     markerLocations: [] as any,
     popupInfo: null as any,
