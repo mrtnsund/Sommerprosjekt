@@ -44,6 +44,9 @@ export default class PureMap extends PureComponent {
     accessToken: process.env.REACT_APP_API_TOKEN,
     unit: "metric",
     profile: "mapbox/driving",
+    controls:{
+      instructions: false
+    }
   });
 
   _updateMarkerLocations = (newMarker: any) => {
