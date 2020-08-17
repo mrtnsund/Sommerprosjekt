@@ -21,7 +21,9 @@ import {
   IonTitle,
   IonButton,
   IonItem,
+  IonFabButton,
 } from "@ionic/react";
+import { RoutesListButton } from "./RoutesListButton";
 
 require("dotenv").config();
 
@@ -88,24 +90,22 @@ export default class PureMap extends PureComponent {
 
   _addDirections() {
     const map = this.mapRef.current.getMap();
-    try{
+    try {
       map.addControl(this.directions, "top-left");
-
-    }catch(error){
-      alert("Could not add directions")
-      return
+    } catch (error) {
+      alert("Could not add directions");
+      return;
     }
   }
 
   _removeDirections() {
     const map = this.mapRef.current.getMap();
 
-    try{
+    try {
       map.removeControl(this.directions);
-
-    }catch(error) {
-      alert("Cannot remove route that doesn't exist...")
-      return
+    } catch (error) {
+      alert("Cannot remove route that doesn't exist...");
+      return;
     }
   }
 
@@ -132,6 +132,7 @@ export default class PureMap extends PureComponent {
     this.setState({ popupInfo: marker });
     this.setState({ showModalPopup: true });
   };
+
   _closeModal() {
     this.setState({ showModalPopup: false });
   }
@@ -194,14 +195,17 @@ export default class PureMap extends PureComponent {
 
           {this._renderPopup()}
           <Crosshair />
-          <MapAddButton
-            mapRef={this.mapRef}
-            markerLocations={this.state.markerLocations}
-            updateMarkers={this._updateMarkerLocations}
-            openDirections={() => this._addDirections()}
-            removeDirections={() => this._removeDirections()}
-          />
 
+          <div>
+            <MapAddButton
+              mapRef={this.mapRef}
+              markerLocations={this.state.markerLocations}
+              updateMarkers={this._updateMarkerLocations}
+              openDirections={() => this._addDirections()}
+              removeDirections={() => this._removeDirections()}
+            />
+            <RoutesListButton />
+          </div>
           <div style={{ position: "absolute", right: 3, marginTop: "4%" }}>
             <NavigationControl />
             <GeolocateControl
