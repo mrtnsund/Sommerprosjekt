@@ -21,9 +21,9 @@ import {
   IonTitle,
   IonButton,
   IonItem,
-  IonFabButton,
+  
 } from "@ionic/react";
-import { RoutesListButton } from "./MarkerListButton";
+import { MarkerListButton } from "./MarkerListButton";
 
 require("dotenv").config();
 
@@ -204,7 +204,7 @@ export default class PureMap extends PureComponent {
               openDirections={() => this._addDirections()}
               removeDirections={() => this._removeDirections()}
             />
-            <RoutesListButton />
+            <MarkerListButton locations={this.state.markerLocations} />
           </div>
           <div style={{ position: "absolute", right: 3, marginTop: "4%" }}>
             <NavigationControl />
