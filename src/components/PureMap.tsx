@@ -21,7 +21,6 @@ import {
   IonTitle,
   IonButton,
   IonItem,
-  
 } from "@ionic/react";
 import { MarkerListButton } from "./MarkerListButton";
 
@@ -53,39 +52,6 @@ export default class PureMap extends PureComponent {
     markerLocations = [...markerLocations, newMarker];
 
     this.setState({ markerLocations });
-  };
-
-  _addMarker = () => {
-    const map = this.mapRef.current.getMap();
-    let { lng, lat } = map.getCenter();
-
-    let { markerLocations } = this.state;
-
-    let newid = 0;
-    if (markerLocations.length !== 0) {
-      newid = markerLocations.slice(-1)[0].id + 1;
-    }
-
-    if (lng !== undefined && lat !== undefined) {
-      const newMarker = {
-        id: newid,
-        name: "",
-        longitude: lng,
-        latitude: lat,
-      };
-
-      markerService
-        .create(newMarker)
-        .then((returnedMarker) => {
-          markerLocations = [...markerLocations, returnedMarker];
-          this.setState({ markerLocations });
-          console.log("added: ", newMarker);
-        })
-        .catch((error) => console.log(error));
-    } else {
-      //Add some error handling here.
-      return;
-    }
   };
 
   _addDirections() {

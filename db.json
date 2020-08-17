@@ -21,6 +21,14 @@
       "description": "Halla",
       "longitude": 6.3838363303320405,
       "latitude": 60.56099152685255
+    },
+    {
+      "id": 4,
+      "name": "Foss",
+      "nearestLocation": "Vøringsfoss, Vestland, Norway",
+      "description": "Is boss",
+      "longitude": 7.521614538919634,
+      "latitude": 60.14759013329535
     }
   ]
 }
