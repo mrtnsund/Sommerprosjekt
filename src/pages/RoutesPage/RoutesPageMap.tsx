@@ -19,7 +19,7 @@ const RoutesPageMap = () => {
             <IonButtons slot="start">
               <IonMenuButton></IonMenuButton>
             </IonButtons>
-            <IonTitle>Routes</IonTitle>
+            <IonTitle>MapView</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent>
