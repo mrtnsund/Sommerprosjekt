@@ -31,11 +31,26 @@ const DashboardPage: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
           </IonButtons>
-          <IonTitle size="large">Dashboard</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent>
+        <IonGrid>
+          <IonRow className="statistics">
+            <IonCol>
+              <p className="statisticsNo">1</p>
+              <p className="statisticsText">TRIP</p>
+            </IonCol>
+            <IonCol>
+              <p className="statisticsNo">23</p>
+              <p className="statisticsText">LIKES</p>
+            </IonCol>
+            <IonCol>
+              <p className="statisticsNo">22</p>
+              <p className="statisticsText">LIKES</p>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
         <IonGrid className="cardsContainer">
           <IonRow className="cards">
             <IonCol className="card en">

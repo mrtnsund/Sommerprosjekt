@@ -13,7 +13,7 @@
     height: 180px;
     padding: 20px;
     border-radius: 10px;
-    font-size: 25px;
+    font-size: 22px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
     min-width: 200px;
@@ -33,12 +33,25 @@
     background-color:#FFC87C;
 }
 .icon {
-    font-size: 50px;
+    font-size: 40px;
 }
 .iconContainer {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 .cardText {
     margin: 0px;
+}
+.statistics {
+    text-align: center;
+    margin: 20px;
+}
+.statisticsNo {
+    font-size: 26px;
+    color: grey;
+}
+.statisticsText {
+    font-size: 14px;
+    margin: -10px;
+    color: #C1C1D8;
 }
