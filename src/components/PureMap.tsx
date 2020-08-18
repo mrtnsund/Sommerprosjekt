@@ -4,7 +4,6 @@ import ReactMapGL, {
   GeolocateControl,
   InteractiveMap,
 } from "react-map-gl";
-import Geocoder from 'react-mapbox-gl-geocoder'
 //@ts-ignore
 import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css";
@@ -27,9 +26,7 @@ import { MarkerListButton } from "./MarkerListButton";
 
 require("dotenv").config();
 
-const queryParams = {
-  country: 'no'
-}
+
 
 export default class PureMap extends PureComponent {
   state = {
@@ -149,16 +146,12 @@ export default class PureMap extends PureComponent {
     });
   }
 
-  _onSelected = (viewport: any, item: any) => {
-    this.setState({viewport});
-    console.log('Selected: ', item);
-  }
+  
   
 
   render() {
     return (
       <div style={{ position: "absolute", width: "100%", height: "100%" }}>
-        <Geocoder mapboxApiAccessToken={process.env.REACT_APP_API_TOKEN} onSelected={this._onSelected} viewport={this.state.viewport} hideOnSelect={true} queryParams={queryParams}/>
         <ReactMapGL
           ref={this.mapRef}
           {...this.state.viewport}
