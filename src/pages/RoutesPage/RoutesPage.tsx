@@ -10,16 +10,16 @@ import {
   IonButton,
   IonIcon,
 } from "@ionic/react";
-import './RoutesPage.css';
+import "./RoutesPage.css";
 import RoutesPageCard from "./RoutesPageCard";
 import { add } from "ionicons/icons";
 
 const RoutesPage: React.FC = () => {
-  const [viewMap, setViewMap] = useState(false)
+  const [viewMap, setViewMap] = useState(false);
 
   const toggleView = () => {
     setViewMap(!viewMap);
-  }
+  };
 
   return (
     <IonPage>
@@ -31,13 +31,17 @@ const RoutesPage: React.FC = () => {
           <IonTitle>Routes</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-      <IonButton expand="block" color="success" className="addButton" size="large">
-          <IonIcon icon={add}/>
-          <p className="addButtonText">Add a new route</p>
-        </IonButton>
-        <RoutesPageCard />
-      </IonContent>
+      <RoutesPageCard />
+
+      <IonButton
+        expand="block"
+        color="success"
+        className="addButton"
+        size="large"
+      >
+        <IonIcon icon={add} />
+        <p className="addButtonText">Add a new route</p>
+      </IonButton>
     </IonPage>
   );
 };

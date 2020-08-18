@@ -6,6 +6,7 @@ import {
   IonCardSubtitle,
   IonCardContent,
   IonButton,
+  IonContent,
 } from "@ionic/react";
 import React, { useState } from "react";
 import {
@@ -73,6 +74,7 @@ const RoutesPageCard = () => {
     }
   };
   return (
+    <IonContent>
     <IonCard>
       <IonCardHeader>
         <IonItem lines="none">
@@ -94,6 +96,7 @@ const RoutesPageCard = () => {
 
       <IonCardContent>{expandCard()}</IonCardContent>
     </IonCard>
+    </IonContent>
   );
 };
 
