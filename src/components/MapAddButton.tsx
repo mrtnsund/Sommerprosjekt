@@ -49,7 +49,7 @@ const MapAddButton: React.FC<{
       });
   };
 
-  
+  //MODAL
 
   return (
     <IonFab vertical="bottom" horizontal="end" slot="fixed">
