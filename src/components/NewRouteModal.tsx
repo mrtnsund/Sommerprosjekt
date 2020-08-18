@@ -15,6 +15,9 @@ import { add, saveOutline } from "ionicons/icons";
 import "../styles/popupmodal.css";
 import Geocoder from "react-mapbox-gl-geocoder";
 
+import directionService from "../services/directionServices";
+import { dir } from "console";
+
 require("dotenv").config();
 
 const queryParams = {
@@ -23,8 +26,38 @@ const queryParams = {
 
 export const NewRouteModal = () => {
   const [showModal, setShowModal] = useState(false);
-  const [geocoderItemFrom, setGeocoderItemFrom] = useState("");
-  const [geocoderItemTo, setGeocoderItemTo] = useState("");
+  const [geocoderItemFrom, setGeocoderItemFrom] = useState({
+    bbox: [],
+    center: [],
+    context: [],
+    geometry: {
+      coordinates: [],
+      type: "",
+    },
+    id: "",
+    place_name: "",
+    properties: {},
+    relevance: 0,
+    text: "",
+    type: "",
+  });
+  const [geocoderItemTo, setGeocoderItemTo] = useState({
+    bbox: [],
+    center: [],
+    context: [],
+    geometry: {
+      coordinates: [],
+      type: "",
+    },
+    id: "",
+    place_name: "",
+    properties: {},
+    relevance: 0,
+    text: "",
+    type: "",
+  });
+  const [directions, setDirections] = useState({});
+
   const [viewport, setViewport] = useState({
     longitude: 5.3242,
     latitude: 60.393,
@@ -33,14 +66,33 @@ export const NewRouteModal = () => {
 
   const onFromSelected = (viewport: any, item: any) => {
     setViewport(viewport);
-    console.log("From: ", item.geometry.coordinates);
     setGeocoderItemFrom(item);
   };
 
+
   const onToSelected = (viewport: any, item: any) => {
     setViewport(viewport);
-    console.log("To: ", item.geometry.coordinates);
     setGeocoderItemTo(item);
+  };
+
+  const handleSaveClick = (event: any) => {
+    event.preventDefault();
+    let fromCoordinates = geocoderItemFrom.geometry.coordinates;
+    let toCoordinates = geocoderItemTo.geometry.coordinates;
+
+    let coordinates = `${fromCoordinates[0]},${fromCoordinates[1]};${toCoordinates[0]},${toCoordinates[1]}`;
+
+    directionService
+      .getDirections(coordinates)
+      .then((directionObject) => {
+        setDirections(directionObject);
+        console.log(directionObject)
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(`no directions found`);
+      })
+      .finally(() => setShowModal(false));
   };
 
   return (
@@ -71,7 +123,7 @@ export const NewRouteModal = () => {
                   onSelected={onFromSelected}
                   hideOnSelect={true}
                   queryParams={queryParams}
-                  initialInputValue=""
+                  updateInputOnSelect={true}
                 />
               </IonCol>
             </IonRow>
@@ -86,12 +138,12 @@ export const NewRouteModal = () => {
                   onSelected={onToSelected}
                   hideOnSelect={true}
                   queryParams={queryParams}
-                  initialInputValue=""
+                  updateInputOnSelect={true}
                 />
               </IonCol>
             </IonRow>
           </IonGrid>
-          <IonButton expand="block" size="large">
+          <IonButton expand="block" size="large" onClick={handleSaveClick}>
             <IonIcon icon={saveOutline} />
             <p>Save</p>
           </IonButton>
