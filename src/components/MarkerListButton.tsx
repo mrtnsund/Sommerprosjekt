@@ -41,7 +41,7 @@ export const MarkerListButton: React.FC<{ locations: any }> = ({
 
 
   return (
-    <IonFab vertical="center" horizontal="end" slot="fixed">
+    <IonFab vertical="bottom" horizontal="center" slot="fixed">
       <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
         <IonContent>
           <IonHeader translucent={true}>
