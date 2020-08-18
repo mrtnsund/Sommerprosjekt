@@ -10,15 +10,15 @@
 }
 .card {
     margin: 10px;
-
     height: 180px;
     padding: 20px;
     border-radius: 10px;
     font-size: 25px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
-    min-width: 250px;
+    min-width: 200px;
     max-width: 500px;
+    text-align: center;
 }
 .en {
     background-color: #FB9876;
@@ -31,4 +31,14 @@
 }
 .fire {
     background-color:#FFC87C;
+}
+.icon {
+    font-size: 50px;
+}
+.iconContainer {
+    text-align: center;
+    margin-top: 10px;
+}
+.cardText {
+    margin: 0px;
 }

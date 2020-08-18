@@ -10,33 +10,60 @@ import {
   IonGrid,
   IonRow,
   IonCol,
+  IonIcon,
+  IonItem,
 } from "@ionic/react";
-import './DashboardPage.css';
+import "./DashboardPage.css";
 import React from "react";
+import {
+  analyticsOutline,
+  carSportOutline,
+  happyOutline,
+  peopleCircleOutline,
+  constructOutline,
+} from "ionicons/icons";
 
 const DashboardPage: React.FC = () => {
   return (
     <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonButtons slot="start">
-              <IonMenuButton></IonMenuButton>
-            </IonButtons>
-            <IonTitle size="large">Dashboard</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton></IonMenuButton>
+          </IonButtons>
+          <IonTitle size="large">Dashboard</IonTitle>
+        </IonToolbar>
+      </IonHeader>
 
       <IonContent>
         <IonGrid className="cardsContainer">
           <IonRow className="cards">
             <IonCol className="card en">
-              My trips
+              <div className="iconContainer">
+                <IonIcon icon={carSportOutline} className="icon"></IonIcon>
+              </div>
+              <p className="cardText">My trips</p>
             </IonCol>
-            <IonCol className="card to">Give recommendations</IonCol>
+            <IonCol className="card to">
+              <div className="iconContainer">
+                <IonIcon icon={happyOutline} className="icon"></IonIcon>
+              </div>
+              <p className="cardText">Give recommendation</p>
+            </IonCol>
           </IonRow>
           <IonRow className="cards">
-            <IonCol className="card tre">Placeholder</IonCol>
-            <IonCol className="card fire">Placeholder</IonCol>
+            <IonCol className="card tre">
+              <div className="iconContainer">
+                <IonIcon icon={peopleCircleOutline} className="icon"></IonIcon>
+              </div>
+              <p className="cardText">Friends</p>
+            </IonCol>
+            <IonCol className="card fire">
+              <div className="iconContainer">
+                <IonIcon icon={constructOutline} className="icon"></IonIcon>
+              </div>
+              <p className="cardText">Placeholder</p>
+            </IonCol>
           </IonRow>
         </IonGrid>
       </IonContent>
