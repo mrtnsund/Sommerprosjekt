@@ -12,6 +12,7 @@ import {
   IonCol,
   IonIcon,
   IonItem,
+  IonBadge,
 } from "@ionic/react";
 import "./DashboardPage.css";
 import React from "react";
@@ -42,11 +43,17 @@ const DashboardPage: React.FC = () => {
               <p className="statisticsText">TRIP</p>
             </IonCol>
             <IonCol>
-              <p className="statisticsNo">23</p>
+              <p className="statisticsNo">
+                23
+                <IonBadge color="primary" className="notification">+3</IonBadge>
+              </p>
               <p className="statisticsText">LIKES</p>
             </IonCol>
             <IonCol>
-              <p className="statisticsNo">22</p>
+              <p className="statisticsNo">
+                22
+                <IonBadge color="success" className="notification">+3</IonBadge>
+              </p>
               <p className="statisticsText">LIKES</p>
             </IonCol>
           </IonRow>
